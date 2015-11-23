@@ -9,7 +9,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     public Animator anim;
     public GameObject groundCheck;
 
-    private float jumpPower = 375.0f;
+    private float jumpPower = 500.0f;
     private float minJumpDelay = .65f;
     private float jumpTime = 0.0f;
     private Rigidbody2D rb2d;
@@ -137,6 +137,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        //If the trigger the Player Character is colliding with is named "DeathLine", get the index of the loaded level and restart that level
         if ("DeathLine" == other.gameObject.name)
         {
             int loadedLevel = Application.loadedLevel;

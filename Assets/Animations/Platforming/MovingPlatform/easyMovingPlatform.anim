@@ -17,19 +17,39 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: {x: 48.5299988, y: .270000011, z: -3.203125}
-        inSlope: {x: -8.49499893, y: 0, z: 0}
-        outSlope: {x: -8.49499893, y: 0, z: 0}
-        tangentMode: 0
-      - time: 2
-        value: {x: 31.5400009, y: .270000011, z: -3.203125}
+        value: {x: 34.3464813, y: -.123986661, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
-      - time: 4
-        value: {x: 48.5299988, y: .270000011, z: -3.203125}
-        inSlope: {x: 8.49499893, y: 0, z: 0}
-        outSlope: {x: 8.49499893, y: 0, z: 0}
+      - time: .0166666675
+        value: {x: 34.3467102, y: -.123986661, z: 0}
+        inSlope: {x: .0137329232, y: 0, z: 0}
+        outSlope: {x: .0137329232, y: 0, z: 0}
+        tangentMode: 0
+      - time: .0333333015
+        value: {x: 34.3464813, y: -.123986661, z: 0}
+        inSlope: {x: -.0550875217, y: 0, z: 0}
+        outSlope: {x: -.0550875217, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1.98333335
+        value: {x: 17.9956188, y: -.123986661, z: 0}
+        inSlope: {x: -1.53785443, y: 0, z: 0}
+        outSlope: {x: -1.53785443, y: 0, z: 0}
+        tangentMode: 0
+      - time: 2.0333333
+        value: {x: 17.947464, y: -.123986661, z: 0}
+        inSlope: {x: -.3784661, y: 0, z: 0}
+        outSlope: {x: -.101028524, y: 0, z: 0}
+        tangentMode: 0
+      - time: 3.98333335
+        value: {x: 34.3307533, y: -.123986661, z: 0}
+        inSlope: {x: .879099011, y: 0, z: 0}
+        outSlope: {x: .879099011, y: 0, z: 0}
+        tangentMode: 0
+      - time: 4.01666641
+        value: {x: 34.3464813, y: -.123986661, z: 0}
+        inSlope: {x: .06000017, y: 0, z: 0}
+        outSlope: {x: 8.26841164, y: 0, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -54,7 +74,7 @@ AnimationClip:
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: 4
+    m_StopTime: 4.01666641
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -72,21 +92,21 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: 0
-        value: 48.5299988
-        inSlope: -8.49499893
-        outSlope: -8.49499893
-        tangentMode: 10
-      - time: 2
-        value: 31.5400009
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 4
-        value: 48.5299988
-        inSlope: 8.49499893
-        outSlope: 8.49499893
-        tangentMode: 10
+      - time: .0333333015
+        value: 34.3464813
+        inSlope: -.0550875217
+        outSlope: -.0550875217
+        tangentMode: 0
+      - time: 2.0333333
+        value: 17.947464
+        inSlope: -.3784661
+        outSlope: -.101028524
+        tangentMode: 1
+      - time: 4.01666641
+        value: 34.3464813
+        inSlope: .06000017
+        outSlope: 8.26841164
+        tangentMode: 1
       m_PreInfinity: 2
       m_PostInfinity: 2
     attribute: m_LocalPosition.x
@@ -97,17 +117,17 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: .270000011
+        value: -.123986661
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 2
-        value: .270000011
+      - time: 1.98333335
+        value: -.123986661
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 4
-        value: .270000011
+      - time: 3.98333335
+        value: -.123986661
         inSlope: 0
         outSlope: 0
         tangentMode: 10
@@ -120,18 +140,8 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: 0
-        value: -3.203125
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 2
-        value: -3.203125
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 4
-        value: -3.203125
+      - time: .0166666675
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
