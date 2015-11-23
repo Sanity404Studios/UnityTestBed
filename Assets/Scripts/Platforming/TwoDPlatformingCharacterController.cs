@@ -58,7 +58,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
 
         #region Jumping
         //If the desired key is down, and the player character is on the ground, set set some bools, set the animator paramiter "In Air From Jump" to true for animations to play, add force for thhe jump, and start the jump delay to prevent double jump
-        if (true == onGround && Input.GetKeyDown(KeyCode.LeftControl))
+        if (true == onGround && Input.GetKeyDown(KeyCode.Space))
         {
             onGround = false;
             jumping = true;
