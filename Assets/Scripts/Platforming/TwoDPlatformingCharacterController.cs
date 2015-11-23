@@ -134,4 +134,13 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         }
         #endregion Stick To Moving Platform
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if ("DeathLine" == other.gameObject.name)
+        {
+            int loadedLevel = Application.loadedLevel;
+            Application.LoadLevel(loadedLevel);
+        }
+    }
 }
