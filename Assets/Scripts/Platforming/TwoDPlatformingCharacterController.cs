@@ -37,6 +37,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         lR = gameObject.GetComponent<LineRenderer>();
         //Sets the width of the LineRenderer
         lR.SetWidth(.2f, .2f);
+
     }
 
     // Update is called once per frame
@@ -96,7 +97,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
             OperateGrapplingHook();
         }
         #endregion Get Mouse Clicks
-        Debug.Log(Input.mousePosition);
+
     }
         
 
@@ -165,13 +166,26 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
 
     void OperateGrapplingHook()
     {
-        Vector2 currMousePos = Input.mousePostion;
-        RaycastHit2D hit2D = Physics2D.Raycast(gameObject.transform.position, currMousePos, hookRange);
-        Debug.DrawLine(gameObject.transform.position, currMousePos);
-        if(null != hit2D)
+        Vector2 currMousePos = Input.mousePosition;
+        if (currMousePos.x > (Screen.width / 2))
         {
-            //Instantiate(hookSprite, hit2D.point, Quaternion.identity);
-            
+            RaycastHit2D hit2D = Physics2D.Raycast(gameObject.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            Debug.DrawRay(gameObject.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+
         }
+        if (currMousePos.x < (Screen.width / 2))
+        {
+            RaycastHit2D hit2D = Physics2D.Raycast(gameObject.transform.position, -Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            Debug.DrawRay(gameObject.transform.position, -Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        }
+
+
+        
+        
+        //if(null != hit2D)
+        //{
+        //    //Instantiate(hookSprite, hit2D.point, Quaternion.identity);
+            
+        //}
     }
 }
