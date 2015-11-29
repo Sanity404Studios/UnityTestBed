@@ -17,7 +17,6 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private byte hookRange = 12;
     private Rigidbody2D rb2d;
     private Collision2D coll;
-    private SpriteRenderer playerSprite;
     private bool onGround = true;
     private bool jumping = false;
     private bool falling = false;
@@ -26,7 +25,12 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private Vector3 newScale;
     private Vector3 lastPlatformPosition = Vector3.zero;
     private Vector3 currPlatformDelta = Vector3.zero;
-    private Vector3 fooBar = Vector3.zero;
+    private Vector2 currMousePos;
+    private Vector2 currPlayerPos;
+    private Vector2 castDirection;
+    private Vector2 relativeEndPoint;
+    private Vector2 adjustedPlayerPos;
+
     // Use this for initialization
     void Start()
     {
@@ -39,10 +43,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         //Sets the width of the LineRenderer
         lR.SetWidth(.2f, .2f);
         //Gets the sprite renderer component
-        playerSprite = gameObject.GetComponent<SpriteRenderer>();
-
-        
-
+        lR.enabled = false;
     }
 
     // Update is called once per frame
@@ -171,42 +172,27 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
 
     void OperateGrapplingHook()
     {
-        Vector2 currMousePos = Input.mousePosition;
-        if (currMousePos.x > (Screen.width / 2))
+        currMousePos = Input.mousePosition;
+        currPlayerPos = gameObject.transform.position;
+        castDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        relativeEndPoint.x = castDirection.x - currPlayerPos.x;
+        relativeEndPoint.y = castDirection.y - currPlayerPos.y;
+        adjustedPlayerPos.y = currPlayerPos.y;
+        adjustedPlayerPos.x = currPlayerPos.x + .75f;
+
+        Debug.DrawRay(adjustedPlayerPos, relativeEndPoint, Color.red, 2.0f);
+        RaycastHit2D hit2D = Physics2D.Raycast(adjustedPlayerPos, relativeEndPoint, 10.0f);
+
+        if (null != hit2D.collider)
         {
-
-            Vector3 camToWorld = Camera.main.ScreenToWorldPoint(currMousePos);
-            Vector2 camToWorld2D = GetVector2(camToWorld);
-            Vector2 pos2D = GetVector2(transform.position);
-            Vector2 adjustRight2D = GetVector2(transform.right);
-            Vector2 adjustOrigin2D;
-            adjustOrigin2D.x = (pos2D.x + adjustRight2D.x);
-            adjustOrigin2D.y = pos2D.y;
-            
-            RaycastHit2D hit2D = Physics2D.Raycast(adjustOrigin2D, camToWorld2D);
-
-            Debug.DrawRay(adjustOrigin2D, camToWorld2D);
-            Debug.Log("World cords " + camToWorld2D + "Adjusted Position" + adjustOrigin2D);
-
-            //if (null != hit2D.collider)
-            //{
-            //    Instantiate(hookSprite, hit2D.collider.transform.position, Quaternion.identity);
-            //}
-
+            lR.enabled = true;
+            Instantiate(hookSprite, currPlayerPos, Quaternion.identity);
+            GameObject foundHookObject = GameObject.Find("hookSprite");
+            lR.SetPosition(1, currPlayerPos);
+            lR.SetPosition(2, foundHookObject.transform.position);
+            Rigidbody2D hookSpriteRB = hookSprite.GetComponent<Rigidbody2D>();
+            hookSpriteRB.AddForce(hit2D.point, ForceMode2D.Impulse);
         }
-
-        //if (currMousePos.x < (Screen.width / 2))
-        //{
-        //    RaycastHit2D hit2D = Physics2D.Raycast(gameObject.transform.position, -Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        //    Debug.DrawRay(gameObject.transform.position, -Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        //}
-    }
-
-    Vector2 GetVector2(Vector3 currTransform)
-    {
-        Vector2 tempVec;
-        tempVec.x = currTransform.x;
-        tempVec.y = currTransform.y;
-        return tempVec;
     }
 }

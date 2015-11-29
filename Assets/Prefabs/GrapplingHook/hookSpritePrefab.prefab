@@ -10,6 +10,8 @@ GameObject:
   - 4: {fileID: 439382}
   - 212: {fileID: 21200418}
   - 114: {fileID: 11408284}
+  - 50: {fileID: 5040548}
+  - 61: {fileID: 6151860}
   m_Layer: 0
   m_Name: hookSpritePrefab
   m_TagString: Untagged
@@ -24,11 +26,40 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.98999977, y: .230000004, z: 0}
-  m_LocalScale: {x: .0617059842, y: .0617059842, z: .0617059842}
+  m_LocalPosition: {x: 7.66791534, y: 1.5860641, z: -.5}
+  m_LocalScale: {x: .036014583, y: .036014583, z: .036014583}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5040548
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117804}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &6151860
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117804}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 14.6285715, y: 14.6285715}
 --- !u!114 &11408284
 MonoBehaviour:
   m_ObjectHideFlags: 1
