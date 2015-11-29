@@ -188,9 +188,9 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         {
             lR.enabled = true;
             Instantiate(hookSprite, currPlayerPos, Quaternion.identity);
-            GameObject foundHookObject = GameObject.Find("hookSprite");
-            lR.SetPosition(1, currPlayerPos);
-            lR.SetPosition(2, foundHookObject.transform.position);
+            GameObject foundHookObject = GameObject.Find("hookSpritePrefab(Clone)");
+            lR.SetPosition(0, currPlayerPos);
+            lR.SetPosition(1, foundHookObject.transform.position);
             Rigidbody2D hookSpriteRB = hookSprite.GetComponent<Rigidbody2D>();
             hookSpriteRB.AddForce(hit2D.point, ForceMode2D.Impulse);
         }
