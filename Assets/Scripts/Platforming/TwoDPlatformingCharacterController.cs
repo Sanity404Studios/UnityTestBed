@@ -17,6 +17,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private byte hookRange = 12;
     private Rigidbody2D rb2d;
     private Collision2D coll;
+    private SpriteRenderer playerSprite;
     private bool onGround = true;
     private bool jumping = false;
     private bool falling = false;
@@ -25,7 +26,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private Vector3 newScale;
     private Vector3 lastPlatformPosition = Vector3.zero;
     private Vector3 currPlatformDelta = Vector3.zero;
-
+    private Vector3 fooBar = Vector3.zero;
     // Use this for initialization
     void Start()
     {
@@ -37,6 +38,10 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         lR = gameObject.GetComponent<LineRenderer>();
         //Sets the width of the LineRenderer
         lR.SetWidth(.2f, .2f);
+        //Gets the sprite renderer component
+        playerSprite = gameObject.GetComponent<SpriteRenderer>();
+
+        
 
     }
 
@@ -97,7 +102,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
             OperateGrapplingHook();
         }
         #endregion Get Mouse Clicks
-
+        
     }
         
 
@@ -169,23 +174,39 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         Vector2 currMousePos = Input.mousePosition;
         if (currMousePos.x > (Screen.width / 2))
         {
-            RaycastHit2D hit2D = Physics2D.Raycast(gameObject.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-            Debug.DrawRay(gameObject.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
-        }
-        if (currMousePos.x < (Screen.width / 2))
-        {
-            RaycastHit2D hit2D = Physics2D.Raycast(gameObject.transform.position, -Camera.main.ScreenToWorldPoint(Input.mousePosition));
-            Debug.DrawRay(gameObject.transform.position, -Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        }
-
-
-        
-        
-        //if(null != hit2D)
-        //{
-        //    //Instantiate(hookSprite, hit2D.point, Quaternion.identity);
+            Vector3 camToWorld = Camera.main.ScreenToWorldPoint(currMousePos);
+            Vector2 camToWorld2D = GetVector2(camToWorld);
+            Vector2 pos2D = GetVector2(transform.position);
+            Vector2 right2D = GetVector2(transform.right);
+            Vector2 adjust2D;
+            adjust2D.x = (pos2D.x + right2D.x) * 1.25f;
+            adjust2D.y = pos2D.y;
             
+            RaycastHit2D hit2D = Physics2D.Raycast(adjust2D, camToWorld2D);
+
+            Debug.DrawRay(gameObject.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            Debug.Log("World cords " + camToWorld + "Mouse pos in screen cords " + currMousePos);
+
+            //if (null != hit2D.collider)+
+            //{
+            //    Instantiate(hookSprite, hit2D.collider.transform.position, Quaternion.identity);
+            //}
+
+        }
+
+        //if (currMousePos.x < (Screen.width / 2))
+        //{
+        //    RaycastHit2D hit2D = Physics2D.Raycast(gameObject.transform.position, -Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        //    Debug.DrawRay(gameObject.transform.position, -Camera.main.ScreenToWorldPoint(Input.mousePosition));
         //}
+    }
+
+    Vector2 GetVector2(Vector3 currTransform)
+    {
+        Vector2 tempVec;
+        tempVec.x = currTransform.x;
+        tempVec.y = currTransform.y;
+        return tempVec;
     }
 }
