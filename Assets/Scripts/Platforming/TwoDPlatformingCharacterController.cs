@@ -178,17 +178,17 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
             Vector3 camToWorld = Camera.main.ScreenToWorldPoint(currMousePos);
             Vector2 camToWorld2D = GetVector2(camToWorld);
             Vector2 pos2D = GetVector2(transform.position);
-            Vector2 right2D = GetVector2(transform.right);
-            Vector2 adjust2D;
-            adjust2D.x = (pos2D.x + right2D.x) * 1.25f;
-            adjust2D.y = pos2D.y;
+            Vector2 adjustRight2D = GetVector2(transform.right);
+            Vector2 adjustOrigin2D;
+            adjustOrigin2D.x = (pos2D.x + adjustRight2D.x);
+            adjustOrigin2D.y = pos2D.y;
             
-            RaycastHit2D hit2D = Physics2D.Raycast(adjust2D, camToWorld2D);
+            RaycastHit2D hit2D = Physics2D.Raycast(adjustOrigin2D, camToWorld2D);
 
-            Debug.DrawRay(gameObject.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-            Debug.Log("World cords " + camToWorld + "Mouse pos in screen cords " + currMousePos);
+            Debug.DrawRay(adjustOrigin2D, camToWorld2D);
+            Debug.Log("World cords " + camToWorld2D + "Adjusted Position" + adjustOrigin2D);
 
-            //if (null != hit2D.collider)+
+            //if (null != hit2D.collider)
             //{
             //    Instantiate(hookSprite, hit2D.collider.transform.position, Quaternion.identity);
             //}
