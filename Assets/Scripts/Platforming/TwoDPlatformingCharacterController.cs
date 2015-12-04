@@ -17,7 +17,6 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private float timeBeforeAnotherHook;
     private byte hookRange = 12;
     private Rigidbody2D rb2d;
-    private Collision2D coll;
     private bool onGround = true;
     private bool jumping = false;
     private bool falling = false;
@@ -182,6 +181,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         adjustedPlayerPos.x = currPlayerPos.x + .75f;
 
         RaycastHit2D hit2D = Physics2D.Raycast(adjustedPlayerPos, relativeEndPoint, 10.0f);
+        Debug.DrawRay(adjustedPlayerPos, relativeEndPoint, Color.red, 4.0f);
 
         if (null != hit2D.collider)
         {
@@ -195,7 +195,11 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
             lineRend.SetPosition(1, foundHookObject.transform.position);
             lineRend.enabled = true;
 
-            hookSpriteRB.AddForce(hit2D.point * 10f, ForceMode2D.Impulse);
+            hookSprite.transform.position = Vector2.Lerp(adjustedPlayerPos, hit2D.point, Time.deltaTime);
+
+            //hookSpriteRB.AddForce(hit2D.point - currPlayerPos * 00f);
+            hookSpriteRB.velocity = (hit2D.point - currPlayerPos).normalized * 35.0f;
+            
         }
     }
 }
