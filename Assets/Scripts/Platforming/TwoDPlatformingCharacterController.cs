@@ -103,7 +103,6 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
             OperateGrapplingHook();
         }
         #endregion Get Mouse Clicks
-        
     }
         
 
@@ -172,34 +171,56 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
 
     void OperateGrapplingHook()
     {
+        //Current play position
         currPlayerPos = gameObject.transform.position;
+        //The direction to raycast in
         castDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+        //Adjusts the endpoint into local space, and adjusts the start of the raycast and Instantiate to be out of the collider of the player
         relativeEndPoint.x = castDirection.x - currPlayerPos.x;
         relativeEndPoint.y = castDirection.y - currPlayerPos.y;
         adjustedPlayerPos.y = currPlayerPos.y;
         adjustedPlayerPos.x = currPlayerPos.x + .75f;
 
+        //Performs the raycast
         RaycastHit2D hit2D = Physics2D.Raycast(adjustedPlayerPos, relativeEndPoint, 10.0f);
         Debug.DrawRay(adjustedPlayerPos, relativeEndPoint, Color.red, 4.0f);
 
-        if (null != hit2D.collider)
+        //if we hit a collider and the tag of the gameObject that was hit is equal to CanBeHooked
+        if (null != hit2D.collider && "CanBeHooked" == hit2D.transform.gameObject.tag)
         {
-            
-            Instantiate(hookSprite, adjustedPlayerPos, Quaternion.identity);
-            GameObject foundHookObject = GameObject.Find("hookSpritePrefab(Clone)");
-            hookSpriteRB = foundHookObject.GetComponent<Rigidbody2D>();
+                //Place the sprite for the hook at the adjusted player position with the rotation of 0.0
+                Instantiate(hookSprite, adjustedPlayerPos, Quaternion.identity);
 
+                //finds the object that was just made
+                GameObject foundHookObject = GameObject.Find("hookSpritePrefab(Clone)");
 
-            lineRend.SetPosition(0, adjustedPlayerPos);
-            lineRend.SetPosition(1, foundHookObject.transform.position);
-            lineRend.enabled = true;
+                //if the hook sprite gameObject has a RigidBody2D component
+                if (hookSpriteRB = foundHookObject.GetComponent<Rigidbody2D>())
+                {
+                    //set the line renderer component starting postion to the player position
+                    lineRend.SetPosition(0, currPlayerPos);
+                    lineRend.SetPosition(1, foundHookObject.transform.position);
+                    lineRend.enabled = true;
+                    InvokeRepeating("LineRenderUpdate", .01f, Time.deltaTime);
 
-            hookSprite.transform.position = Vector2.Lerp(adjustedPlayerPos, hit2D.point, Time.deltaTime);
+                    hookSprite.transform.position = Vector2.Lerp(adjustedPlayerPos, hit2D.point, Time.deltaTime);
 
-            //hookSpriteRB.AddForce(hit2D.point - currPlayerPos * 00f);
-            hookSpriteRB.velocity = (hit2D.point - currPlayerPos).normalized * 35.0f;
-            
+                    //hookSpriteRB.AddForce(hit2D.point - currPlayerPos * 00f);
+                    hookSpriteRB.velocity = (hit2D.point - currPlayerPos).normalized * 35.0f;
+                }
+                else
+                {
+                    Debug.LogError("No Rigidybody2D Found on hookSpritePrefab(Clone). The hell happend?");
+                }
+
         }
+    }
+
+    void LineRenderUpdate()
+    {
+        Debug.Log(hookSprite.transform.position);
+        lineRend.SetPosition(0, currPlayerPos);
+        lineRend.SetPosition(1, hookSprite.transform.position);
     }
 }

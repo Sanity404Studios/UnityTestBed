@@ -98,7 +98,7 @@ GameObject:
   - 61: {fileID: 152175655}
   m_Layer: 8
   m_Name: floor
-  m_TagString: Untagged
+  m_TagString: CanBeHooked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -404,7 +404,7 @@ GameObject:
   - 61: {fileID: 1066423727}
   m_Layer: 8
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: CanBeHooked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -574,7 +574,7 @@ GameObject:
   - 61: {fileID: 1513430691}
   m_Layer: 8
   m_Name: plat2
-  m_TagString: Untagged
+  m_TagString: CanBeHooked
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
