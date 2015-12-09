@@ -219,8 +219,9 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
 
     void LineRenderUpdate()
     {
-        Debug.Log(hookSprite.transform.position);
-        lineRend.SetPosition(0, currPlayerPos);
-        lineRend.SetPosition(1, hookSprite.transform.position);
+        Vector3 hookSpritePos = hookSprite.transform.position;
+        Debug.Log(hookSpritePos);
+        lineRend.SetPosition(0, adjustedPlayerPos);
+        lineRend.SetPosition(1, hookSpritePos);
     }
 }
