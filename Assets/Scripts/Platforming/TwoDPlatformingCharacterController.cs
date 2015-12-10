@@ -31,6 +31,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private Vector2 relativeEndPoint;
     private Vector2 adjustedPlayerPos;
     private Rigidbody2D hookSpriteRB;
+    private HookThrow hookTh;
 
     // Use this for initialization
     void Start()
@@ -45,6 +46,8 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         lineRend.SetWidth(.5f, .5f);
         //Gets the sprite renderer component
         lineRend.enabled = false;
+        //Gets reference to hook throw script
+        hookTh = gameObject.GetComponent<HookThrow>();
     }
 
     // Update is called once per frame
@@ -104,6 +107,19 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         //    OperateGrapplingHook();
         //}
         #endregion Get Mouse Clicks CURRENTLY COMMENTED OUT
+
+        #region Grappling Hook Up/down
+        if(Input.GetKey(KeyCode.W))
+        {
+            hookTh.GetComponent<HookThrow>().RaiseHook();
+        }
+
+        if(Input.GetKey(KeyCode.S))
+        {
+            hookTh.GetComponent<HookThrow>().LowerHook();
+        }
+
+        #endregion Grappling Hook Up/down
     }
         
 

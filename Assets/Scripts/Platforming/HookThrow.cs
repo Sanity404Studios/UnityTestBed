@@ -10,6 +10,7 @@ public class HookThrow : MonoBehaviour {
     private Vector3 targetPos;
     private RaycastHit2D hitInfo;
     private float hookRange = 10.0f;
+    private float reelStep = 2f;
     private bool isGrappling = false;
 
     //Use for grabbing script and component references
@@ -67,4 +68,23 @@ public class HookThrow : MonoBehaviour {
             lineR.SetPosition(1, hitInfo.point);
         }
 	}
+
+    public void RaiseHook()
+    {
+        if(true == isGrappling)
+        {
+            Debug.Log("Raising player");
+            joint.distance -= reelStep * Time.deltaTime;
+        }
+    }
+
+    public void LowerHook()
+    {
+
+        if (true == isGrappling)
+        {
+            Debug.Log("Lowering player");
+            joint.distance += reelStep * Time.deltaTime;
+        }
+    }
 }
