@@ -67,6 +67,11 @@ public class HookThrow : MonoBehaviour {
             lineR.SetPosition(0, currPlayerPos);
             lineR.SetPosition(1, hitInfo.point);
         }
+
+        if(hookRange < joint.distance)
+        {
+            joint.distance = hookRange;
+        }
 	}
 
     public void RaiseHook()
@@ -80,11 +85,15 @@ public class HookThrow : MonoBehaviour {
 
     public void LowerHook()
     {
-
         if (true == isGrappling)
         {
             Debug.Log("Lowering player");
             joint.distance += reelStep * Time.deltaTime;
         }
+    }
+
+    public bool GetIsGrappling()
+    {
+        return isGrappling;
     }
 }
