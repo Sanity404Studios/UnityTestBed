@@ -20,6 +20,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private bool onGround = true;
     private bool jumping = false;
     private bool falling = false;
+    private bool isHookOut = false;
     private LineRenderer lineRend;
     private Transform currPlatform = null;
     private Vector3 newScale;
@@ -41,7 +42,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         //Get Line Renderer
         lineRend = gameObject.GetComponent<LineRenderer>();
         //Sets the width of the LineRenderer
-        lineRend.SetWidth(.2f, .2f);
+        lineRend.SetWidth(.5f, .5f);
         //Gets the sprite renderer component
         lineRend.enabled = false;
     }
@@ -202,26 +203,28 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
                     lineRend.SetPosition(0, currPlayerPos);
                     lineRend.SetPosition(1, foundHookObject.transform.position);
                     lineRend.enabled = true;
-                    InvokeRepeating("LineRenderUpdate", .01f, Time.deltaTime);
+                    isHookOut = true;
 
                     hookSprite.transform.position = Vector2.Lerp(adjustedPlayerPos, hit2D.point, Time.deltaTime);
 
-                    //hookSpriteRB.AddForce(hit2D.point - currPlayerPos * 00f);
-                    hookSpriteRB.velocity = (hit2D.point - currPlayerPos).normalized * 35.0f;
+                    //hookSpriteRB.AddForce(hit2D.point - currPlayerPos);
+                    hookSpriteRB.velocity = (hit2D.point - currPlayerPos) * 5.0f;
                 }
                 else
                 {
-                    Debug.LogError("No Rigidybody2D Found on hookSpritePrefab(Clone). The hell happend?");
+                    Debug.LogError("No Rigidybody2D Found on hookSpritePrefab(Clone). The hell happend?!?");
                 }
-
         }
     }
 
-    void LineRenderUpdate()
+    void LateUpdate()
     {
-        Vector3 hookSpritePos = hookSprite.transform.position;
-        Debug.Log(hookSpritePos);
-        lineRend.SetPosition(0, adjustedPlayerPos);
-        lineRend.SetPosition(1, hookSpritePos);
+        if(true == isHookOut)
+        {
+            Vector3 hookSpritePos = hookSprite.transform.position;
+            Debug.Log(hookSpritePos);
+            lineRend.SetPosition(0, currPlayerPos);
+            lineRend.SetPosition(1, hookSpritePos);
+        }
     }
 }
