@@ -810,7 +810,7 @@ DistanceJoint2D:
   m_GameObject: {fileID: 1787762330}
   m_Enabled: 1
   serializedVersion: 3
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: .0449428558, y: 1.97748446}
