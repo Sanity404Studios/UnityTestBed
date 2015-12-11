@@ -17,7 +17,6 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private bool onGround = true;
     private bool jumping = false;
     private bool falling = false;
-    private bool isHookOut = false;
     private LineRenderer lineRend;
     private Transform currPlatform = null;
     private Vector3 newScale;
