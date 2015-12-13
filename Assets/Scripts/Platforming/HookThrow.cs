@@ -4,14 +4,17 @@ using System.Collections;
 public class HookThrow : MonoBehaviour {
 
     public LayerMask allowedObjects;
+    public GameObject hookSprite;
 
     private LineRenderer lineR;
     private DistanceJoint2D joint;
     private Vector3 targetPos;
     private RaycastHit2D hitInfo;
+    private Rigidbody2D hooksRB;
     private float hookRange = 10.0f;
     private float reelStep = 2f;
     private bool isGrappling = false;
+    private Vector2 currPlayerPos;
 
     //Use for grabbing script and component references
     void Awake()
@@ -29,7 +32,7 @@ public class HookThrow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Vector2 currPlayerPos = gameObject.transform.position;
+        currPlayerPos = gameObject.transform.position;
 
 	    if(Input.GetMouseButtonDown(0) && false == isGrappling)
         {
@@ -42,15 +45,15 @@ public class HookThrow : MonoBehaviour {
             relativeEndPoint.y = targetPos.y - currPlayerPos.y;
 
             hitInfo = Physics2D.Raycast(currPlayerPos, relativeEndPoint, hookRange, allowedObjects);
-            Debug.DrawRay(currPlayerPos, relativeEndPoint, Color.red, .8f);
+
 
             if(null != hitInfo.collider)
             {
                 joint.enabled = true;
                 lineR.enabled = true;
                 isGrappling = true;
-                joint.connectedAnchor = hitInfo.point;
-                joint.distance = Vector2.Distance(currPlayerPos, hitInfo.point);
+
+                Instantiate(hookSprite, transform.position, Quaternion.identity) as GameObject;
                 lineR.SetPosition(0, currPlayerPos);
                 lineR.SetPosition(1, hitInfo.point);
             }
@@ -95,5 +98,11 @@ public class HookThrow : MonoBehaviour {
     public bool GetIsGrappling()
     {
         return isGrappling;
+    }
+
+    void AttachPlayer()
+    {
+        joint.connectedAnchor = hitInfo.point;
+        joint.distance = Vector2.Distance(currPlayerPos, hitInfo.point);
     }
 }

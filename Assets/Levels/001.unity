@@ -830,6 +830,7 @@ MonoBehaviour:
   allowedObjects:
     serializedVersion: 2
     m_Bits: 4294966783
+  hookSprite: {fileID: 0}
 --- !u!1 &1796142802
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,7 +957,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: .192156896, g: .38374579, b: .474509835, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0

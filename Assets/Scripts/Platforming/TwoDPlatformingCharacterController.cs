@@ -36,12 +36,6 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         anim.gameObject.GetComponent<Animator>();
         //Gets 2d rigidbody
         rb2d = gameObject.GetComponent<Rigidbody2D>();
-        //Get Line Renderer
-        lineRend = gameObject.GetComponent<LineRenderer>();
-        //Sets the width of the LineRenderer
-        lineRend.SetWidth(.5f, .5f);
-        //Gets the sprite renderer component
-        lineRend.enabled = false;
         //Gets reference to hook throw script
         hookTh = gameObject.GetComponent<HookThrow>();
     }
