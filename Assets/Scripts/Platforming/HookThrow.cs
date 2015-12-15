@@ -15,6 +15,7 @@ public class HookThrow : MonoBehaviour {
     private float reelStep = 2f;
     private bool isGrappling = false;
     private Vector2 currPlayerPos;
+    private HookThrow hThrow;
 
     //Use for grabbing script and component references
     void Awake()
@@ -22,6 +23,8 @@ public class HookThrow : MonoBehaviour {
         joint = GetComponent<DistanceJoint2D>();
         joint.enabled = false;
         lineR = GetComponent<LineRenderer>();
+        hThrow = GetComponent<HookThrow>();
+        
     }
 	// Use this for initialization
 	void Start () 
@@ -53,7 +56,8 @@ public class HookThrow : MonoBehaviour {
                 lineR.enabled = true;
                 isGrappling = true;
 
-                Instantiate(hookSprite, transform.position, Quaternion.identity) as GameObject;
+                //Instantiate(hookSprite, transform.position, Quaternion.identity) as GameObject;
+                hThrow.AttachPlayer();
                 lineR.SetPosition(0, currPlayerPos);
                 lineR.SetPosition(1, hitInfo.point);
             }
