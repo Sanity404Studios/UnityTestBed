@@ -33,7 +33,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     void Start()
     {
         //Gets animator component
-        anim.gameObject.GetComponent<Animator>();
+        anim = gameObject.GetComponent<Animator>();
         //Gets 2d rigidbody
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         //Gets reference to hook throw script
@@ -104,8 +104,6 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
 
         #endregion Grappling Hook Up/down
     }
-        
-
 
     void FixedUpdate()
     {
@@ -167,5 +165,23 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
             int loadedLevel = Application.loadedLevel;
             Application.LoadLevel(loadedLevel);
         }
+    }
+
+    public void IsInMenu(bool currState)
+    {
+        if(true == currState)
+        {
+            rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        else
+        {
+            rb2d.constraints = RigidbodyConstraints2D.None;
+        }
+    }
+
+    public void EditGravity(float gravityToSet)
+    {
+        Debug.Log("I am being called!");
+        rb2d.gravityScale = gravityToSet;
     }
 }
