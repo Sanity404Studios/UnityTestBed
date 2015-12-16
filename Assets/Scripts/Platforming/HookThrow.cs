@@ -13,6 +13,7 @@ public class HookThrow : MonoBehaviour {
     private Rigidbody2D hooksRB;
     private float hookRange = 10.0f;
     private float reelStep = 2f;
+    private float stopDistance = 1.0f;
     private bool isGrappling = false;
     private Vector2 currPlayerPos;
     private HookThrow hThrow;
@@ -83,10 +84,14 @@ public class HookThrow : MonoBehaviour {
 
     public void RaiseHook()
     {
-        if(true == isGrappling)
+        if(true == isGrappling && stopDistance < joint.distance)
         {
             Debug.Log("Raising player");
             joint.distance -= reelStep * Time.deltaTime;
+        }
+        else
+        {
+            Debug.Log("Player is not grappling(???) or player is too close to object");
         }
     }
 
