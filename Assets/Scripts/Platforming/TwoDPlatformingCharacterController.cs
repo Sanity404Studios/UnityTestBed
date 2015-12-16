@@ -8,38 +8,48 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     public string axisName = "Horizontal";
     public Animator anim;
     public GameObject groundCheck;
+    public GameObject hookSprite;
 
     private float jumpPower = 500.0f;
     private float minJumpDelay = .65f;
     private float jumpTime = 0.0f;
     private Rigidbody2D rb2d;
-    private Collision2D coll;
     private bool onGround = true;
     private bool jumping = false;
     private bool falling = false;
+    private LineRenderer lineRend;
     private Transform currPlatform = null;
     private Vector3 newScale;
     private Vector3 lastPlatformPosition = Vector3.zero;
     private Vector3 currPlatformDelta = Vector3.zero;
+    private Vector2 currPlayerPos;
+    private Vector2 castDirection;
+    private Vector2 relativeEndPoint;
+    private Vector2 adjustedPlayerPos;
+    private Rigidbody2D hookSpriteRB;
+    private HookThrow hookTh;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         //Gets animator component
         anim.gameObject.GetComponent<Animator>();
         //Gets 2d rigidbody
         rb2d = gameObject.GetComponent<Rigidbody2D>();
-	}
-	
-	// Update is called once per frame
-	void Update ()
-   {
+        //Gets reference to hook throw script
+        hookTh = gameObject.GetComponent<HookThrow>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         #region Switch Character Direction
         //Sets the float "speed" in the animator component for certain animations
         anim.SetFloat("Speed", (Mathf.Abs(Input.GetAxis(axisName))));
 
         //If there is positive movement othe horizontal axis, move the character in that direction and change scale so that the sprite is facing that way too.
-        if(Input.GetAxis(axisName) < 0) {
+        if (Input.GetAxis(axisName) < 0)
+        {
             newScale = transform.localScale;
             newScale.x = -1.0f;
             transform.localScale = newScale;
@@ -53,7 +63,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         #endregion Switch Character Direction
 
         #region Move Character
-        transform.position += transform.right*Input.GetAxis(axisName) * localCharacterSpeed * Time.deltaTime;
+        transform.position += transform.right * Input.GetAxis(axisName) * localCharacterSpeed * Time.deltaTime;
         #endregion Move Character
 
         #region Jumping
@@ -79,8 +89,22 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         {
             falling = false;
         }
-    }
         #endregion Jumping
+
+        #region Grappling Hook Up/down
+        if(Input.GetKey(KeyCode.W))
+        {
+            hookTh.GetComponent<HookThrow>().RaiseHook();
+        }
+
+        if(Input.GetKey(KeyCode.S))
+        {
+            hookTh.GetComponent<HookThrow>().LowerHook();
+        }
+
+        #endregion Grappling Hook Up/down
+    }
+        
 
 
     void FixedUpdate()
@@ -89,7 +113,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         jumpTime -= Time.deltaTime;
         //checks if Player Character is on the ground, for disallowing doublejump
         onGround = Physics2D.Linecast(transform.position, groundCheck.transform.position, 1 << LayerMask.NameToLayer("Ground"));
-       
+
 
         //Checks for the Player Character being on the ground, and the minimum jump delay being passed. If true, onGround becomes true, stops jump animation, sets jumping to falls
         if (onGround && jumpTime < 0) //&& jumping == true
@@ -113,7 +137,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         platforms.Add(hit.transform);
 
         //When the Player Moves to a new platform, set the new platform as the current one, and set the delta to be zero so that the velocity of the Player Character is not preserved onto the new platform
-        if(currPlatform != hit.transform)
+        if (currPlatform != hit.transform)
         {
             currPlatform = hit.transform;
             currPlatformDelta = Vector3.zero;
