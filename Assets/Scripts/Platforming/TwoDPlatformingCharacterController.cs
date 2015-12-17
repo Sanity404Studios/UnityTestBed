@@ -63,7 +63,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         #endregion Switch Character Direction
 
         #region Move Character
-        transform.position += transform.right * Input.GetAxis(axisName) * localCharacterSpeed * Time.deltaTime;
+        transform.position += (transform.right * Input.GetAxis(axisName) * localCharacterSpeed * Time.deltaTime);
         #endregion Move Character
 
         #region Jumping
@@ -114,7 +114,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
 
 
         //Checks for the Player Character being on the ground, and the minimum jump delay being passed. If true, onGround becomes true, stops jump animation, sets jumping to falls
-        if (onGround && jumpTime < 0) //&& jumping == true
+        if (onGround && jumpTime < 0 && false == false)
         {
             onGround = true;
             jumping = false;
@@ -169,7 +169,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
 
     public void IsInMenu(bool currState)
     {
-        if(true == currState)
+        if (true == currState)
         {
             rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
         }
@@ -177,11 +177,5 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         {
             rb2d.constraints = RigidbodyConstraints2D.None;
         }
-    }
-
-    public void EditGravity(float gravityToSet)
-    {
-        Debug.Log("I am being called!");
-        rb2d.gravityScale = gravityToSet;
     }
 }

@@ -99,8 +99,11 @@ public class HookThrow : MonoBehaviour {
     {
         if (true == isGrappling)
         {
-            Debug.Log("Lowering player");
             joint.distance += reelStep * Time.deltaTime;
+        }
+        else
+        {
+            Debug.Log("Player is not grappling(???) or player is too close to object");
         }
     }
 
