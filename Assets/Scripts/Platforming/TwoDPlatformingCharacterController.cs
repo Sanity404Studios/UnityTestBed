@@ -17,23 +17,17 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private bool onGround = true;
     private bool jumping = false;
     private bool falling = false;
-    private LineRenderer lineRend;
     private Transform currPlatform = null;
     private Vector3 newScale;
     private Vector3 lastPlatformPosition = Vector3.zero;
     private Vector3 currPlatformDelta = Vector3.zero;
-    private Vector2 currPlayerPos;
-    private Vector2 castDirection;
-    private Vector2 relativeEndPoint;
-    private Vector2 adjustedPlayerPos;
-    private Rigidbody2D hookSpriteRB;
     private HookThrow hookTh;
 
     // Use this for initialization
     void Start()
     {
         //Gets animator component
-        anim.gameObject.GetComponent<Animator>();
+        anim = gameObject.GetComponent<Animator>();
         //Gets 2d rigidbody
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         //Gets reference to hook throw script
@@ -63,7 +57,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         #endregion Switch Character Direction
 
         #region Move Character
-        transform.position += transform.right * Input.GetAxis(axisName) * localCharacterSpeed * Time.deltaTime;
+        transform.position += (transform.right * Input.GetAxis(axisName) * localCharacterSpeed * Time.deltaTime);
         #endregion Move Character
 
         #region Jumping
@@ -104,8 +98,6 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
 
         #endregion Grappling Hook Up/down
     }
-        
-
 
     void FixedUpdate()
     {
@@ -116,7 +108,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
 
 
         //Checks for the Player Character being on the ground, and the minimum jump delay being passed. If true, onGround becomes true, stops jump animation, sets jumping to falls
-        if (onGround && jumpTime < 0) //&& jumping == true
+        if (onGround && jumpTime < 0 && false == false)
         {
             onGround = true;
             jumping = false;
