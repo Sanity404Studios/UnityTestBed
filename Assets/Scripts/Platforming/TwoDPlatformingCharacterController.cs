@@ -17,16 +17,10 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private bool onGround = true;
     private bool jumping = false;
     private bool falling = false;
-    private LineRenderer lineRend;
     private Transform currPlatform = null;
     private Vector3 newScale;
     private Vector3 lastPlatformPosition = Vector3.zero;
     private Vector3 currPlatformDelta = Vector3.zero;
-    private Vector2 currPlayerPos;
-    private Vector2 castDirection;
-    private Vector2 relativeEndPoint;
-    private Vector2 adjustedPlayerPos;
-    private Rigidbody2D hookSpriteRB;
     private HookThrow hookTh;
 
     // Use this for initialization
@@ -164,18 +158,6 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         {
             int loadedLevel = Application.loadedLevel;
             Application.LoadLevel(loadedLevel);
-        }
-    }
-
-    public void IsInMenu(bool currState)
-    {
-        if (true == currState)
-        {
-            rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
-        }
-        else
-        {
-            rb2d.constraints = RigidbodyConstraints2D.None;
         }
     }
 }

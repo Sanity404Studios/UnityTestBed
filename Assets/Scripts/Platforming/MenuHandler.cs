@@ -13,14 +13,12 @@ public class MenuHandler : MonoBehaviour {
     public Button levelSelectButton;
     
     private int currLevel;
-    private TwoDPlatformingCharacterController platCharCont;
     private MenuHandler mHand;
     bool inMenu;
 
     void Awake()
     {
         currLevel = Application.loadedLevel;
-        platCharCont = GameObject.FindGameObjectWithTag("Player").GetComponent<TwoDPlatformingCharacterController>();
 
         mHand = gameObject.GetComponent<MenuHandler>();
         quitCanvas = quitCanvas.GetComponent<Canvas>();
@@ -40,7 +38,6 @@ public class MenuHandler : MonoBehaviour {
         if(0 == loadedLevel)
         {
             inMenu = true;
-            platCharCont.IsInMenu(inMenu);
         }
     }
 
