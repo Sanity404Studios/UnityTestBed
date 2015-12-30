@@ -63,7 +63,8 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         #endregion Switch Character Direction
 
         #region Move Character
-        transform.position += transform.right * Input.GetAxis(axisName) * localCharacterSpeed * Time.deltaTime;
+        transform.position += transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * Time.deltaTime;
+
         #endregion Move Character
 
         #region Jumping
