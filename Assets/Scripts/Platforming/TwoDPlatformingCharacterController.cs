@@ -4,29 +4,23 @@ using System.Collections.Generic;
 
 public class TwoDPlatformingCharacterController : MonoBehaviour
 {
-    public float localCharacterSpeed = 10.0f;
+    public float localCharacterSpeed = 12.0f;
     public string axisName = "Horizontal";
     public Animator anim;
     public GameObject groundCheck;
     public GameObject hookSprite;
 
-    private float jumpPower = 500.0f;
+    private float jumpPower = 750.0f;
     private float minJumpDelay = .65f;
     private float jumpTime = 0.0f;
     private Rigidbody2D rb2d;
     private bool onGround = true;
     private bool jumping = false;
     private bool falling = false;
-    private LineRenderer lineRend;
     private Transform currPlatform = null;
     private Vector3 newScale;
     private Vector3 lastPlatformPosition = Vector3.zero;
     private Vector3 currPlatformDelta = Vector3.zero;
-    private Vector2 currPlayerPos;
-    private Vector2 castDirection;
-    private Vector2 relativeEndPoint;
-    private Vector2 adjustedPlayerPos;
-    private Rigidbody2D hookSpriteRB;
     private HookThrow hookTh;
 
     // Use this for initialization

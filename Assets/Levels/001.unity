@@ -729,7 +729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29834d1831327ef49ba4f5383e71caf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localCharacterSpeed: 7
+  localCharacterSpeed: 12
   axisName: Horizontal
   anim: {fileID: 1787762331}
   groundCheck: {fileID: 2089118915}
@@ -742,7 +742,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1787762330}
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: .0500000007
   m_GravityScale: 1
   m_IsKinematic: 0
