@@ -17,6 +17,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private bool onGround = true;
     private bool jumping = false;
     private bool falling = false;
+    private bool controlsLocked = false;
     private Transform currPlatform = null;
     private Vector3 newScale;
     private Vector3 lastPlatformPosition = Vector3.zero;
@@ -61,17 +62,16 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
 
         #endregion Move Character
 
-        #region Jumping
+        #region Jumping pt 1 (rest in fixed update)
         //If the desired key is down, and the player character is on the ground, set set some bools, set the animator paramiter "In Air From Jump" to true for animations to play, add force for thhe jump, and start the jump delay to prevent double jump
-        if (true == onGround && Input.GetKeyDown(KeyCode.Space))
+        if (true == onGround && Input.GetKeyDown(KeyCode.Space) && controlsLocked == false)
         {
             onGround = false;
             jumping = true;
             anim.SetBool("In Air From Jump", true);
-            rb2d.AddForce(transform.up * jumpPower);
+            rb2d.AddForce(transform.up * jumpPower);   
             jumpTime = minJumpDelay;
         }
-
         //If not on the ground, and not jumping, set animator paramiter "Falling" to true for falling animation to play.
         if (false == onGround && false == jumping)
         {
@@ -99,16 +99,18 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
 
         #endregion Grappling Hook Up/down
     }
-        
-
 
     void FixedUpdate()
     {
-        #region Platform Detection
-        jumpTime -= Time.deltaTime;
-        //checks if Player Character is on the ground, for disallowing doublejump
+        #region Ground Detection
+
+        //checks if Player Character is on the ground, for disallowing infanite jumping
         onGround = Physics2D.Linecast(transform.position, groundCheck.transform.position, 1 << LayerMask.NameToLayer("Ground"));
 
+        #endregion Ground Detection
+
+        #region Platform Detection
+        jumpTime -= Time.deltaTime;
 
         //Checks for the Player Character being on the ground, and the minimum jump delay being passed. If true, onGround becomes true, stops jump animation, sets jumping to falls
         if (onGround && jumpTime < 0) //&& jumping == true
@@ -152,6 +154,18 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
             lastPlatformPosition = currPlatform.position;
         }
         #endregion Stick To Moving Platform
+
+        #region Lock Controls
+        if(false == onGround && false == controlsLocked)
+        {
+            controlsLocked = true;
+        }
+
+        if (true == onGround)
+        {
+            controlsLocked = false;
+        }
+        #endregion
     }
 
     void OnTriggerEnter2D(Collider2D other)
