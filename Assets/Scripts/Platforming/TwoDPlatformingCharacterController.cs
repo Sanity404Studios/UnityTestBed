@@ -28,7 +28,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     void Start()
     {
         //Gets animator component
-        anim.gameObject.GetComponent<Animator>();
+        anim = gameObject.GetComponent<Animator>();
         //Gets 2d rigidbody
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         //Gets reference to hook throw script
@@ -58,8 +58,10 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         #endregion Switch Character Direction
 
         #region Move Character
+
         transform.position += transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * Time.deltaTime;
 
+        transform.position += (transform.right * Input.GetAxis(axisName) * localCharacterSpeed * Time.deltaTime);
         #endregion Move Character
 
         #region Jumping pt 1 (rest in fixed update)
@@ -113,7 +115,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         jumpTime -= Time.deltaTime;
 
         //Checks for the Player Character being on the ground, and the minimum jump delay being passed. If true, onGround becomes true, stops jump animation, sets jumping to falls
-        if (onGround && jumpTime < 0) //&& jumping == true
+        if (onGround && jumpTime < 0 && false == false)
         {
             onGround = true;
             jumping = false;
