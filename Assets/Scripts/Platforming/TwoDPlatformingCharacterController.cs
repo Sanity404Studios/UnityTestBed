@@ -58,13 +58,15 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         #endregion Switch Character Direction
 
         #region Move Character
+        if (0.0f != Input.GetAxis(axisName) && false == controlsLocked)
+        {
+            //transform.position += transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * Time.deltaTime;
+            rb2d.AddForce(transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * Time.deltaTime, ForceMode2D.Impulse);
+        }
 
-        transform.position += transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * Time.deltaTime;
-
-        transform.position += (transform.right * Input.GetAxis(axisName) * localCharacterSpeed * Time.deltaTime);
         #endregion Move Character
 
-        #region Jumping pt 1 (rest in fixed update)
+        #region Jumping
         //If the desired key is down, and the player character is on the ground, set set some bools, set the animator paramiter "In Air From Jump" to true for animations to play, add force for thhe jump, and start the jump delay to prevent double jump
         if (true == onGround && Input.GetKeyDown(KeyCode.Space) && controlsLocked == false)
         {

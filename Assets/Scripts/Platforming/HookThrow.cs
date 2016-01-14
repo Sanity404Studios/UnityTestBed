@@ -11,7 +11,7 @@ public class HookThrow : MonoBehaviour {
     private Vector3 targetPos;
     private RaycastHit2D hitInfo;
     private Rigidbody2D hooksRB;
-    private float hookRange = 11.0f;
+    private float hookRange = 15.0f;
     private float reelStep = 2f;
     private float stopDistance = 1.0f;
     private bool isGrappling = false;
@@ -27,11 +27,6 @@ public class HookThrow : MonoBehaviour {
         hThrow = GetComponent<HookThrow>();
         
     }
-	// Use this for initialization
-	void Start () 
-    {
-
-	}
 	
 	// Update is called once per frame
 	void Update () {
