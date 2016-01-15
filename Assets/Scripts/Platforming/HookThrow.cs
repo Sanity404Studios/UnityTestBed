@@ -10,11 +10,14 @@ public class HookThrow : MonoBehaviour {
     private DistanceJoint2D joint;
     private Vector3 targetPos;
     private RaycastHit2D hitInfo;
-    private Rigidbody2D hooksRB;
+    //private Rigidbody2D hooksRB;
     private float hookRange = 15.0f;
-    private float reelStep = 2f;
+    private float reelStep = 8f;
     private float stopDistance = 1.0f;
+    private float currJointDistance;
     private bool isGrappling = false;
+    private bool maxDistOnly = true;
+    private bool isInAutoMode = false;
     private Vector2 currPlayerPos;
     private HookThrow hThrow;
 
@@ -32,6 +35,16 @@ public class HookThrow : MonoBehaviour {
 	void Update () {
 
         currPlayerPos = gameObject.transform.position;
+
+        if(true== isGrappling && isInAutoMode)
+        {
+            Invoke("RaiseHook", Time.deltaTime);
+        }
+
+        if(true == isGrappling) 
+        {
+            currJointDistance = joint.distance;
+        }
 
 	    if(Input.GetMouseButtonDown(0) && false == isGrappling)
         {
@@ -58,14 +71,38 @@ public class HookThrow : MonoBehaviour {
                 lineR.SetPosition(1, hitInfo.point);
             }
         }
-        if(true == isGrappling && Input.GetKeyDown(KeyCode.E))
+        #region Keybinds
+        if (true == isGrappling && Input.GetKeyDown(KeyCode.E))
         {
             joint.enabled = false;
             isGrappling = false;
             lineR.enabled = false;
         }
+        if(true == isGrappling && Input.GetKeyDown(KeyCode.R))
+        {
+            if(hThrow.GetMaxDistanceOnly() == true) 
+            {
+                hThrow.SetMaxDistanceOnly(false);
+            }
+            else
+            {
+                hThrow.SetMaxDistanceOnly(true);
+            }
+        }
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            if(false == isInAutoMode)
+            {
+                isInAutoMode = true;
+            } else
+            {
+                isInAutoMode = false;
+            }
+            
+        }
+        #endregion
 
-        if(true == isGrappling)
+        if (true == isGrappling)
         {
             lineR.SetPosition(0, currPlayerPos);
             lineR.SetPosition(1, hitInfo.point);
@@ -76,6 +113,15 @@ public class HookThrow : MonoBehaviour {
             joint.distance = hookRange;
         }
 	}
+
+    void SetMaxDistanceOnly(bool value)
+    {
+        joint.maxDistanceOnly = value;
+    }
+    bool GetMaxDistanceOnly()
+    {
+        return joint.maxDistanceOnly;
+    }
 
     public void RaiseHook()
     {

@@ -13,11 +13,16 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private float jumpPower = 750.0f;
     private float minJumpDelay = .65f;
     private float jumpTime = 0.0f;
+    private float jumpingMovementReduction = 2f;
+    private float grapplingForceMultiplier = 10;
     private Rigidbody2D rb2d;
     private bool onGround = true;
     private bool jumping = false;
     private bool falling = false;
+    private bool hasMoved = false;
     private bool controlsLocked = false;
+    private bool currentlyGrappling;
+    private Quaternion startRotation;
     private Transform currPlatform = null;
     private Vector3 newScale;
     private Vector3 lastPlatformPosition = Vector3.zero;
@@ -27,12 +32,18 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        startRotation = gameObject.transform.rotation;
         //Gets animator component
         anim = gameObject.GetComponent<Animator>();
         //Gets 2d rigidbody
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         //Gets reference to hook throw script
         hookTh = gameObject.GetComponent<HookThrow>();
+
+        if(Application.loadedLevel > 0)
+        {
+            InvokeRepeating("LerpRotatePlayer", Time.deltaTime, Time.deltaTime);
+        }
     }
 
     // Update is called once per frame
@@ -58,13 +69,25 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         #endregion Switch Character Direction
 
         #region Move Character
-        if (0.0f != Input.GetAxis(axisName) && false == controlsLocked)
+        if (hasMoved && false == controlsLocked)
         {
-            //transform.position += transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * Time.deltaTime;
-            rb2d.AddForce(transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * Time.deltaTime, ForceMode2D.Impulse);
+            transform.position += transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * Time.deltaTime;
         }
 
+        if (true == jumping && hasMoved)
+        {
+            transform.position += transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * Time.deltaTime / jumpingMovementReduction;
+        }
         #endregion Move Character
+
+        #region GrapplingMovement
+
+        if (true == hasMoved && true == currentlyGrappling)
+        {
+            rb2d.AddForce(transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * grapplingForceMultiplier  * Time.deltaTime, ForceMode2D.Force);
+        }
+
+        #endregion
 
         #region Jumping
         //If the desired key is down, and the player character is on the ground, set set some bools, set the animator paramiter "In Air From Jump" to true for animations to play, add force for thhe jump, and start the jump delay to prevent double jump
@@ -102,6 +125,27 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         }
 
         #endregion Grappling Hook Up/down
+
+        #region check Hasmoved
+        if(0.0f != Input.GetAxis(axisName))
+        {
+            hasMoved = true;
+        }
+        else
+        {
+            hasMoved = false;
+        }
+        #endregion
+
+        #region Check isGrappling
+        if(true == hookTh.GetIsGrappling())
+        {
+            currentlyGrappling = true;
+        }else 
+        {
+            currentlyGrappling = false;
+        }
+        #endregion
     }
 
     void FixedUpdate()
@@ -180,5 +224,10 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
             int loadedLevel = Application.loadedLevel;
             Application.LoadLevel(loadedLevel);
         }
+    }
+
+    void LerpRotatePlayer()
+    {
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, Time.deltaTime * 10);
     }
 }
