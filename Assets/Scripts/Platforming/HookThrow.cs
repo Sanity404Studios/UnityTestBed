@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class HookThrow : MonoBehaviour {
 
     public LayerMask allowedObjects;
     public GameObject hookSprite;
+    public Text InAutoState;
+    public Text maxDistanceOnlyState;
+
 
     private LineRenderer lineR;
     private DistanceJoint2D joint;
@@ -21,6 +25,9 @@ public class HookThrow : MonoBehaviour {
     private Vector2 currPlayerPos;
     private HookThrow hThrow;
 
+    private string autoModeText = "Automatic Mode: ";
+    private string lengthStateText = "Fixed Distance Mode: ";
+
     //Use for grabbing script and component references
     void Awake()
     {
@@ -29,6 +36,13 @@ public class HookThrow : MonoBehaviour {
         lineR = GetComponent<LineRenderer>();
         hThrow = GetComponent<HookThrow>();
         
+    }
+
+    void Start()
+    {
+        InAutoState.text = autoModeText + isInAutoMode.ToString();
+        maxDistanceOnlyState.text = lengthStateText + joint.maxDistanceOnly.ToString();
+
     }
 	
 	// Update is called once per frame
@@ -94,9 +108,11 @@ public class HookThrow : MonoBehaviour {
             if(false == isInAutoMode)
             {
                 isInAutoMode = true;
+                InAutoState.text = autoModeText + isInAutoMode.ToString();
             } else
             {
                 isInAutoMode = false;
+                InAutoState.text = autoModeText + isInAutoMode.ToString();
             }
             
         }
@@ -117,6 +133,7 @@ public class HookThrow : MonoBehaviour {
     void SetMaxDistanceOnly(bool value)
     {
         joint.maxDistanceOnly = value;
+        maxDistanceOnlyState.text = lengthStateText + joint.maxDistanceOnly.ToString();
     }
     bool GetMaxDistanceOnly()
     {
