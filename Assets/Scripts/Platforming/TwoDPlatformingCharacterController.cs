@@ -74,7 +74,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
             transform.position += transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * Time.deltaTime;
         }
 
-        if (true == jumping && hasMoved)
+        if (false == onGround && hasMoved)
         {
             transform.position += transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * Time.deltaTime / jumpingMovementReduction;
         }
@@ -126,7 +126,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
 
         #endregion Grappling Hook Up/down
 
-        #region check Hasmoved
+        #region check hasMoved
         if(0.0f != Input.GetAxis(axisName))
         {
             hasMoved = true;
