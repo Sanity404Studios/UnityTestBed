@@ -14,7 +14,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private float minJumpDelay = .65f;
     private float jumpTime = 0.0f;
     private float jumpingMovementReduction = 2f;
-    private float grapplingForceMultiplier = 10;
+    private float grapplingForceMultiplier = 15;
     private Rigidbody2D rb2d;
     private bool onGround = true;
     private bool jumping = false;
@@ -114,12 +114,12 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         #endregion Jumping
 
         #region Grappling Hook Up/down
-        if(Input.GetKey(KeyCode.W))
+        if(Input.GetKey(KeyCode.W) && hookTh.GetIsGrappling() == true)
         {
             hookTh.GetComponent<HookThrow>().RaiseHook();
         }
 
-        if(Input.GetKey(KeyCode.S))
+        if(Input.GetKey(KeyCode.S) && hookTh.GetIsGrappling() == true)
         {
             hookTh.GetComponent<HookThrow>().LowerHook();
         }

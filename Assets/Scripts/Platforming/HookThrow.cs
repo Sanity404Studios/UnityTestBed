@@ -26,7 +26,7 @@ public class HookThrow : MonoBehaviour {
     private HookThrow hThrow;
 
     private string autoModeText = "Automatic Mode: ";
-    private string lengthStateText = "Fixed Distance Mode: ";
+    private string lengthStateText = "Variable Distance Mode: ";
 
     //Use for grabbing script and component references
     void Awake()
