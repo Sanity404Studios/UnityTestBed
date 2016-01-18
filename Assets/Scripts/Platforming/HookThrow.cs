@@ -19,8 +19,8 @@ public class HookThrow : MonoBehaviour {
     private float stopDistance = 1.0f;
     private float currJointDistance;
     private bool isGrappling = false;
-    private bool maxDistOnly = true;
     private bool isInAutoMode = false;
+    private bool visualSetupComplete = false;
     private Vector2 currPlayerPos;
     private HookThrow hThrow;
 
@@ -62,48 +62,18 @@ public class HookThrow : MonoBehaviour {
         }
         
         //if the player is left clicking and the player is not currently grappling:
-	    if(Input.GetMouseButtonDown(0) && false == isGrappling)
+        if (Input.GetMouseButtonDown(0))
         {
 
-            #region math for calculating relitive end points for raycasts
-            targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            targetPos.z = 0;
+            hThrow.PreformRaycast();
 
-            Vector2 relativeEndPoint;
-            relativeEndPoint.x = targetPos.x - currPlayerPos.x;
-            relativeEndPoint.y = targetPos.y - currPlayerPos.y;
-            #endregion
-
-            //actual raycast
-            hitInfo = Physics2D.Raycast(currPlayerPos, relativeEndPoint, hookRange, allowedObjects);
-
-            //if we hit something 
-            if(null != hitInfo.collider)
-            {
-                //enabkle the joint
-                joint.enabled = true;
-                //enabkle the line renderer
-                lineR.enabled = true;
-                // set bool to true
-                isGrappling = true;
-
-                //calls method to attach player to the part of the level that was hit
-                hThrow.AttachPlayer();
-
-                //sets up line renderer
-                lineR.SetPosition(0, currPlayerPos);
-                lineR.SetPosition(1, hitInfo.point);
-            }
         }
         #region Keybinds
         // if bool is true and the Key E is pressed, get rid of everything with the grapple so the player can fall / continue on
         if (true == isGrappling && Input.GetKeyDown(KeyCode.E))
         {
-            joint.enabled = false;
-            isGrappling = false;
-            lineR.enabled = false;
+            hThrow.DetachPlayer();
         }
-        //if(true == isGrappling && Input.GetKeyDown(KeyCode.R))
         if(Input.GetKeyDown(KeyCode.R))
         {
             if(hThrow.GetMaxDistanceOnly() == true) 
@@ -190,5 +160,62 @@ public class HookThrow : MonoBehaviour {
     {
         joint.connectedAnchor = hitInfo.point;
         joint.distance = Vector2.Distance(currPlayerPos, hitInfo.point);
+    }
+
+    void PreformRaycast()
+    {
+        #region math for calculating relitive end points for raycasts
+        targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        targetPos.z = 0;
+
+        Vector2 relativeEndPoint;
+        relativeEndPoint.x = targetPos.x - currPlayerPos.x;
+        relativeEndPoint.y = targetPos.y - currPlayerPos.y;
+        #endregion
+
+
+        hitInfo = Physics2D.Raycast(currPlayerPos, relativeEndPoint, hookRange, allowedObjects);
+
+        if (null != hitInfo.collider)
+        {
+            hThrow.SetupVisualsForHook();
+        }
+        else
+        {
+            hThrow.DetachPlayer();
+        }
+    }
+
+    //ONLY CALL IF YOU HAVE HIT SOMETHING WITH A RAYCAST. 
+    void SetupVisualsForHook()
+    {
+        if(null != hitInfo.collider)
+        {
+
+            //enable the joint
+            joint.enabled = true;
+            //enable the line renderer
+            lineR.enabled = true;
+            // set bool to true
+            isGrappling = true;
+
+            //calls method to attach player to the part of the level that was hit
+            hThrow.AttachPlayer();
+
+            //sets up line renderer
+            lineR.SetPosition(0, currPlayerPos);
+            lineR.SetPosition(1, hitInfo.point);
+        }
+        else
+        {
+            Debug.LogError("YA SCRUB. WHY ARE YE CALLING THIS FUNCTON IF YOU HAVEN'T HIT SOMETHING WITH A RAYCAST?");
+        }
+    }
+
+    void DetachPlayer()
+    {
+        joint.enabled = false;
+        isGrappling = false;
+        lineR.enabled = false;
     }
 }

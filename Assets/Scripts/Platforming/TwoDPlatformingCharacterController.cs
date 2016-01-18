@@ -21,7 +21,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private bool falling = false;
     private bool hasMoved = false;
     private bool controlsLocked = false;
-    private bool currentlyGrappling;
+    private bool currentlyGrappling = false;
     private Quaternion startRotation;
     private Transform currPlatform = null;
     private Vector3 newScale;
@@ -74,10 +74,10 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
             transform.position += transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * Time.deltaTime;
         }
 
-        if (false == onGround && hasMoved)
-        {
-            transform.position += transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * Time.deltaTime / jumpingMovementReduction;
-        }
+        //if (false == onGround && hasMoved)
+        //{
+        //    transform.position += transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * Time.deltaTime / jumpingMovementReduction;
+        //}
         #endregion Move Character
 
         #region GrapplingMovement
@@ -204,15 +204,15 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         #endregion Stick To Moving Platform
 
         #region Lock Controls
-        if(false == onGround && false == controlsLocked)
-        {
-            controlsLocked = true;
-        }
+        //if (false == onGround && false == controlsLocked)
+        //{
+        //    controlsLocked = true;
+        //}
 
-        if (true == onGround)
-        {
-            controlsLocked = false;
-        }
+        //if (true == onGround)
+        //{
+        //    controlsLocked = false;
+        //}
         #endregion
     }
 
