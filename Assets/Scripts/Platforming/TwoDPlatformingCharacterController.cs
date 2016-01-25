@@ -13,7 +13,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private float jumpPower = 750.0f;
     private float minJumpDelay = .65f;
     private float jumpTime = 0.0f;
-    private float jumpingMovementReduction = 2f;
+    private float jumpingMovementMultiplier = 100f;
     private float grapplingForceMultiplier = 15;
     private Rigidbody2D rb2d;
     private bool onGround = true;
@@ -42,7 +42,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
 
         if(Application.loadedLevel > 0)
         {
-            InvokeRepeating("LerpRotatePlayer", Time.deltaTime, Time.deltaTime);
+            //InvokeRepeating("LerpRotatePlayer", Time.deltaTime, Time.deltaTime);
         }
     }
 
@@ -69,15 +69,21 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         #endregion Switch Character Direction
 
         #region Move Character
-        if (hasMoved && false == controlsLocked)
+        if (hasMoved && false == controlsLocked && true == onGround)
         {
             transform.position += transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * Time.deltaTime;
         }
 
-        //if (false == onGround && hasMoved)
-        //{
-        //    transform.position += transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * Time.deltaTime / jumpingMovementReduction;
-        //}
+        //if the player is in the air and trying to move.
+        if (false == onGround && hasMoved && true == hookTh.GetIsGrappling())
+        {
+            controlsLocked = true;
+            rb2d.AddForce(transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * jumpingMovementMultiplier * Time.deltaTime); // / jumpingMovementReduction
+        }
+        else
+        {
+            controlsLocked = false;
+        }
         #endregion Move Character
 
         #region GrapplingMovement

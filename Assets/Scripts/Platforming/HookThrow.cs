@@ -13,14 +13,12 @@ public class HookThrow : MonoBehaviour {
     private DistanceJoint2D joint;
     private Vector3 targetPos;
     private RaycastHit2D hitInfo;
-    //private Rigidbody2D hooksRB;
-    private float hookRange = 20.0f;
+    private float hookRange = 22.0f;
     private float reelStep = 8f;
     private float stopDistance = 1.0f;
     private float currJointDistance;
     private bool isGrappling = false;
     private bool isInAutoMode = false;
-    private bool visualSetupComplete = false;
     private Vector2 currPlayerPos;
     private HookThrow hThrow;
 
