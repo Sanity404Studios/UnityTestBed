@@ -1,22 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class HookThrow : MonoBehaviour {
 
     public LayerMask allowedObjects;
     public GameObject hookSprite;
+    public Text InAutoState;
+    public Text maxDistanceOnlyState;
 
     private LineRenderer lineR;
     private DistanceJoint2D joint;
     private Vector3 targetPos;
     private RaycastHit2D hitInfo;
-    private Rigidbody2D hooksRB;
-    private float hookRange = 11.0f;
-    private float reelStep = 2f;
+    private float hookRange = 22.0f;
+    private float reelStep = 8f;
     private float stopDistance = 1.0f;
+    private float currJointDistance;
     private bool isGrappling = false;
+    private bool isInAutoMode = false;
     private Vector2 currPlayerPos;
     private HookThrow hThrow;
+
+    private string autoModeText = "Automatic Mode: ";
+    private string lengthStateText = "Variable Distance Mode: ";
 
     //Use for grabbing script and component references
     void Awake()
@@ -27,50 +34,73 @@ public class HookThrow : MonoBehaviour {
         hThrow = GetComponent<HookThrow>();
         
     }
-	// Use this for initialization
-	void Start () 
-    {
 
-	}
+    void Start()
+    {
+        InAutoState.text = autoModeText + isInAutoMode.ToString();
+        maxDistanceOnlyState.text = lengthStateText + joint.maxDistanceOnly.ToString();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
         currPlayerPos = gameObject.transform.position;
 
-	    if(Input.GetMouseButtonDown(0) && false == isGrappling)
+        // if the player is currently grappling and the hook is in automatic mode, continuslly invoke RaiseHook().
+        if(true== isGrappling && isInAutoMode)
         {
-            
-            targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            targetPos.z = 0;
+            Invoke("RaiseHook", Time.deltaTime);
+        }
 
-            Vector2 relativeEndPoint;
-            relativeEndPoint.x = targetPos.x - currPlayerPos.x;
-            relativeEndPoint.y = targetPos.y - currPlayerPos.y;
+        //Keeps currJointDistance up to date.
+        if(true == isGrappling) 
+        {
+            currJointDistance = joint.distance;
+        }
+        
+        //if the player is left clicking and the player is not currently grappling:
+        if (Input.GetMouseButtonDown(0))
+        {
 
-            hitInfo = Physics2D.Raycast(currPlayerPos, relativeEndPoint, hookRange, allowedObjects);
+            hThrow.PreformRaycast();
 
-
-            if(null != hitInfo.collider)
+        }
+        #region Keybinds
+        // if bool is true and the Key E is pressed, get rid of everything with the grapple so the player can fall / continue on
+        if (true == isGrappling && Input.GetKeyDown(KeyCode.E))
+        {
+            hThrow.DetachPlayer();
+        }
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            if(hThrow.GetMaxDistanceOnly() == true) 
             {
-                joint.enabled = true;
-                lineR.enabled = true;
-                isGrappling = true;
-
-                //Instantiate(hookSprite, transform.position, Quaternion.identity) as GameObject;
-                hThrow.AttachPlayer();
-                lineR.SetPosition(0, currPlayerPos);
-                lineR.SetPosition(1, hitInfo.point);
+                hThrow.SetMaxDistanceOnly(false);
+            }
+            else
+            {
+                hThrow.SetMaxDistanceOnly(true);
             }
         }
-        if(true == isGrappling && Input.GetKeyDown(KeyCode.E))
-        {
-            joint.enabled = false;
-            isGrappling = false;
-            lineR.enabled = false;
-        }
 
-        if(true == isGrappling)
+        //Enables and disables automatic retraction of the grappling hook
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            if(false == isInAutoMode)
+            {
+                isInAutoMode = true;
+                InAutoState.text = autoModeText + isInAutoMode.ToString();
+            } else
+            {
+                isInAutoMode = false;
+                InAutoState.text = autoModeText + isInAutoMode.ToString();
+            }
+            
+        }
+        #endregion
+
+        if (true == isGrappling)
         {
             lineR.SetPosition(0, currPlayerPos);
             lineR.SetPosition(1, hitInfo.point);
@@ -81,6 +111,18 @@ public class HookThrow : MonoBehaviour {
             joint.distance = hookRange;
         }
 	}
+
+    void SetMaxDistanceOnly(bool value)
+    {
+        joint.maxDistanceOnly = value;
+        maxDistanceOnlyState.text = lengthStateText + joint.maxDistanceOnly.ToString();
+    }
+
+    
+    bool GetMaxDistanceOnly()
+    {
+        return joint.maxDistanceOnly;
+    }
 
     public void RaiseHook()
     {
@@ -116,5 +158,62 @@ public class HookThrow : MonoBehaviour {
     {
         joint.connectedAnchor = hitInfo.point;
         joint.distance = Vector2.Distance(currPlayerPos, hitInfo.point);
+    }
+
+    void PreformRaycast()
+    {
+        #region math for calculating relitive end points for raycasts
+        targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        targetPos.z = 0;
+
+        Vector2 relativeEndPoint;
+        relativeEndPoint.x = targetPos.x - currPlayerPos.x;
+        relativeEndPoint.y = targetPos.y - currPlayerPos.y;
+        #endregion
+
+
+        hitInfo = Physics2D.Raycast(currPlayerPos, relativeEndPoint, hookRange, allowedObjects);
+
+        if (null != hitInfo.collider)
+        {
+            hThrow.SetupVisualsForHook();
+        }
+        else
+        {
+            hThrow.DetachPlayer();
+        }
+    }
+
+    //ONLY CALL IF YOU HAVE HIT SOMETHING WITH A RAYCAST. 
+    void SetupVisualsForHook()
+    {
+        if(null != hitInfo.collider)
+        {
+
+            //enable the joint
+            joint.enabled = true;
+            //enable the line renderer
+            lineR.enabled = true;
+            // set bool to true
+            isGrappling = true;
+
+            //calls method to attach player to the part of the level that was hit
+            hThrow.AttachPlayer();
+
+            //sets up line renderer
+            lineR.SetPosition(0, currPlayerPos);
+            lineR.SetPosition(1, hitInfo.point);
+        }
+        else
+        {
+            Debug.LogError("YA SCRUB. WHY ARE YE CALLING THIS FUNCTON IF YOU HAVEN'T HIT SOMETHING WITH A RAYCAST?");
+        }
+    }
+
+    void DetachPlayer()
+    {
+        joint.enabled = false;
+        isGrappling = false;
+        lineR.enabled = false;
     }
 }

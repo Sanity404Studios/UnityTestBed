@@ -14,7 +14,7 @@ public class MenuHandler : MonoBehaviour {
     
     private int currLevel;
     private MenuHandler mHand;
-    bool inMenu;
+    //bool inMenu;
 
     void Awake()
     {
@@ -37,7 +37,7 @@ public class MenuHandler : MonoBehaviour {
     {
         if(0 == loadedLevel)
         {
-            inMenu = true;
+            //inMenu = true;
         }
     }
 
