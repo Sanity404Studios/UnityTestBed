@@ -4,12 +4,13 @@ using System.Collections.Generic;
 
 public class TwoDPlatformingCharacterController : MonoBehaviour
 {
-    public float localCharacterSpeed = 12.0f;
+    
     public string axisName = "Horizontal";
     public Animator anim;
     public GameObject groundCheck;
     public GameObject hookSprite;
 
+    private float localCharacterSpeed = 10.0f;
     private float jumpPower = 750.0f;
     private float minJumpDelay = .65f;
     private float jumpTime = 0.0f;
