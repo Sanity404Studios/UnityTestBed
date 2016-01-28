@@ -1005,11 +1005,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 481248, guid: bcdcf9dc9bf8b624e867e94b61e4ad32, type: 2}
       propertyPath: m_LocalPosition.x
-      value: .340000004
+      value: .670000017
       objectReference: {fileID: 0}
     - target: {fileID: 481248, guid: bcdcf9dc9bf8b624e867e94b61e4ad32, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .419999987
+      value: 1.48000002
       objectReference: {fileID: 0}
     - target: {fileID: 481248, guid: bcdcf9dc9bf8b624e867e94b61e4ad32, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1043,6 +1043,10 @@ Prefab:
       propertyPath: maxDistanceOnlyState
       value: 
       objectReference: {fileID: 793720192}
+    - target: {fileID: 11466514, guid: bcdcf9dc9bf8b624e867e94b61e4ad32, type: 2}
+      propertyPath: particleSystem
+      value: 
+      objectReference: {fileID: 166196, guid: 3c52092f46680d54f879146f8aa1b3ca, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bcdcf9dc9bf8b624e867e94b61e4ad32, type: 2}
   m_IsPrefabParent: 0

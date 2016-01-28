@@ -13,7 +13,8 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private float jumpPower = 750.0f;
     private float minJumpDelay = .65f;
     private float jumpTime = 0.0f;
-    private float jumpingMovementMultiplier = 100f;
+    private float swingingMovementMultiplier = 100f;
+    private float jumpingMovementMultiplier = 45;
     private float grapplingForceMultiplier = 15;
     private Rigidbody2D rb2d;
     private bool onGround = true;
@@ -22,6 +23,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private bool hasMoved = false;
     private bool controlsLocked = false;
     private bool currentlyGrappling = false;
+    private bool hasImpulsed;
     private Quaternion startRotation;
     private Transform currPlatform = null;
     private Vector3 newScale;
@@ -69,16 +71,27 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         #endregion Switch Character Direction
 
         #region Move Character
-        if (hasMoved && false == controlsLocked && true == onGround)
+        if (true == hasMoved && false == controlsLocked && true == onGround)
         {
             transform.position += transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * Time.deltaTime;
         }
+
+        if(false == onGround && true == hasMoved && false == hasImpulsed)
+        {
+            rb2d.AddForce(transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * jumpingMovementMultiplier * Time.deltaTime, ForceMode2D.Impulse);
+            hasImpulsed = true;
+        }
+        if(true == onGround && true == hasImpulsed)
+        {
+            hasImpulsed = false;
+        }
+        Debug.Log(hasImpulsed);
 
         //if the player is in the air and trying to move.
         if (false == onGround && hasMoved && true == hookTh.GetIsGrappling())
         {
             controlsLocked = true;
-            rb2d.AddForce(transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * jumpingMovementMultiplier * Time.deltaTime); // / jumpingMovementReduction
+            rb2d.AddForce(transform.right * Input.GetAxisRaw(axisName) * localCharacterSpeed * swingingMovementMultiplier * Time.deltaTime);
         }
         else
         {

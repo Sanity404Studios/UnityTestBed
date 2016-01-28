@@ -537,6 +537,10 @@ Prefab:
       propertyPath: maxDistanceOnlyState
       value: 
       objectReference: {fileID: 580781170}
+    - target: {fileID: 11466514, guid: bcdcf9dc9bf8b624e867e94b61e4ad32, type: 2}
+      propertyPath: particleSystem
+      value: 
+      objectReference: {fileID: 166196, guid: 3c52092f46680d54f879146f8aa1b3ca, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bcdcf9dc9bf8b624e867e94b61e4ad32, type: 2}
   m_IsPrefabParent: 0

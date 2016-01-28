@@ -6,6 +6,7 @@ public class HookThrow : MonoBehaviour {
 
     public LayerMask allowedObjects;
     public GameObject hookSprite;
+    public GameObject particleSystem;
     public Text InAutoState;
     public Text maxDistanceOnlyState;
 
@@ -39,7 +40,6 @@ public class HookThrow : MonoBehaviour {
     {
         InAutoState.text = autoModeText + isInAutoMode.ToString();
         maxDistanceOnlyState.text = lengthStateText + joint.maxDistanceOnly.ToString();
-
     }
 	
 	// Update is called once per frame
@@ -203,6 +203,7 @@ public class HookThrow : MonoBehaviour {
             //sets up line renderer
             lineR.SetPosition(0, currPlayerPos);
             lineR.SetPosition(1, hitInfo.point);
+            Instantiate(particleSystem, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
         }
         else
         {
