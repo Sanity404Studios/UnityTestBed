@@ -19,16 +19,16 @@ public class SpeedLimiter : MonoBehaviour {
         float forceToApply;
         //Debug.Log(rb2d.velocity);
 
-        if(currVel.x > 25.0f)
+        if(currVel.x > 35.0f)
         {
             forceToApply = rb2d.velocity.x - maxSpeed;
             //Debug.LogWarning("Reducing player velocity by " + forceToApply);
             rb2d.AddForce(-currVel * forceToApply, ForceMode2D.Force);
-            Debug.LogWarning("Speed after change " + currVel);
+            //Debug.LogWarning("Speed after change " + currVel);
             
         }
 
-        if (currVel.y > 25.0f)
+        if (currVel.y > 35.0f)
         {
             forceToApply = rb2d.velocity.y - maxSpeed;
             //Debug.LogWarning("Reducing player velocity by " + forceToApply);

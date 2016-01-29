@@ -10,7 +10,7 @@ public class HookThrow : MonoBehaviour {
     public Text InAutoState;
     public Text maxDistanceOnlyState;
 
-    private LineRenderer lineR;
+    private LineRenderer lineRend;
     private DistanceJoint2D joint;
     private Vector3 targetPos;
     private RaycastHit2D hitInfo;
@@ -22,6 +22,8 @@ public class HookThrow : MonoBehaviour {
     private bool isInAutoMode = false;
     private Vector2 currPlayerPos;
     private HookThrow hThrow;
+    private GameObject currHit;
+    private GameObject LastHit;
 
     private string autoModeText = "Automatic Mode: ";
     private string lengthStateText = "Variable Distance Mode: ";
@@ -31,7 +33,7 @@ public class HookThrow : MonoBehaviour {
     {
         joint = GetComponent<DistanceJoint2D>();
         joint.enabled = false;
-        lineR = GetComponent<LineRenderer>();
+        lineRend = GetComponent<LineRenderer>();
         hThrow = GetComponent<HookThrow>();
         
     }
@@ -102,8 +104,8 @@ public class HookThrow : MonoBehaviour {
 
         if (true == isGrappling)
         {
-            lineR.SetPosition(0, currPlayerPos);
-            lineR.SetPosition(1, hitInfo.point);
+            lineRend.SetPosition(0, currPlayerPos);
+            lineRend.SetPosition(1, hitInfo.point);
         }
 
         if(hookRange < joint.distance)
@@ -128,7 +130,7 @@ public class HookThrow : MonoBehaviour {
     {
         if(true == isGrappling && stopDistance < joint.distance)
         {
-            Debug.Log("Raising player");
+            //Debug.Log("Raising player");
             joint.distance -= reelStep * Time.deltaTime;
         }
         else
@@ -174,13 +176,16 @@ public class HookThrow : MonoBehaviour {
 
         hitInfo = Physics2D.Raycast(currPlayerPos, relativeEndPoint, hookRange, allowedObjects);
 
-        if (null != hitInfo.collider)
+
+        if (null != hitInfo.collider && false == hThrow.GetIsGrappling())
         {
             hThrow.SetupVisualsForHook();
         }
-        else
+        if(null != hitInfo.collider && true == hThrow.GetIsGrappling())
         {
             hThrow.DetachPlayer();
+            hitInfo = new RaycastHit2D();
+            hThrow.SetupVisualsForHook();
         }
     }
 
@@ -193,7 +198,7 @@ public class HookThrow : MonoBehaviour {
             //enable the joint
             joint.enabled = true;
             //enable the line renderer
-            lineR.enabled = true;
+            lineRend.enabled = true;
             // set bool to true
             isGrappling = true;
 
@@ -201,8 +206,8 @@ public class HookThrow : MonoBehaviour {
             hThrow.AttachPlayer();
 
             //sets up line renderer
-            lineR.SetPosition(0, currPlayerPos);
-            lineR.SetPosition(1, hitInfo.point);
+            lineRend.SetPosition(0, currPlayerPos);
+            lineRend.SetPosition(1, hitInfo.point);
             Instantiate(particleSystem, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
         }
         else
@@ -215,6 +220,6 @@ public class HookThrow : MonoBehaviour {
     {
         joint.enabled = false;
         isGrappling = false;
-        lineR.enabled = false;
+        lineRend.enabled = false;
     }
 }
