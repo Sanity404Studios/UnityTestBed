@@ -15,7 +15,5 @@ public class DontDestroyOnLoad : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
             Instance = this;
         }
-
-        Debug.LogWarning(Instance);
     }
 }

@@ -94,11 +94,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 428254, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
       propertyPath: m_LocalPosition.x
-      value: .610000014
+      value: .600000024
       objectReference: {fileID: 0}
     - target: {fileID: 428254, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -.790000021
+      value: -.5
       objectReference: {fileID: 0}
     - target: {fileID: 428254, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
       propertyPath: m_LocalPosition.z
@@ -127,6 +127,10 @@ Prefab:
     - target: {fileID: 172922, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
       propertyPath: m_Name
       value: Right Angeld Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 172922, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
@@ -174,6 +178,10 @@ Prefab:
       propertyPath: m_Name
       value: Right Angeld Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 138142, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
   m_IsPrefabParent: 0
@@ -219,6 +227,10 @@ Prefab:
     - target: {fileID: 138142, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
       propertyPath: m_Name
       value: Right Angeld Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 138142, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
@@ -266,6 +278,10 @@ Prefab:
       propertyPath: m_Name
       value: Right Angeld Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 138142, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
   m_IsPrefabParent: 0
@@ -307,6 +323,10 @@ Prefab:
     - target: {fileID: 460548, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
       propertyPath: m_RootOrder
       value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 138142, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
@@ -354,6 +374,10 @@ Prefab:
       propertyPath: m_Name
       value: Right Angeld Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 138142, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
   m_IsPrefabParent: 0
@@ -400,6 +424,10 @@ Prefab:
       propertyPath: m_Name
       value: Left Angeld Platform (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 101102, guid: 5324a17c5c2e56e4b9a0f00b76649712, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5324a17c5c2e56e4b9a0f00b76649712, type: 2}
   m_IsPrefabParent: 0
@@ -440,11 +468,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 428254, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 172922, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
       propertyPath: m_Name
       value: Right Angeld Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 172922, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
@@ -527,7 +559,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 428254, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
       propertyPath: m_RootOrder
-      value: 21
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 172922, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
@@ -575,6 +611,10 @@ Prefab:
       propertyPath: m_Name
       value: Left Angeld Platform (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 101102, guid: 5324a17c5c2e56e4b9a0f00b76649712, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5324a17c5c2e56e4b9a0f00b76649712, type: 2}
   m_IsPrefabParent: 0
@@ -620,6 +660,10 @@ Prefab:
     - target: {fileID: 138142, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
       propertyPath: m_Name
       value: Right Angeld Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 138142, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
@@ -706,7 +750,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 738485352}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .469999999, y: 2.52999997, z: -10}
+  m_LocalPosition: {x: .200000003, y: 3.5999999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -722,7 +766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446f3b1796691694fb1bb598b460407f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dampTime: .150000006
+  dampTime: .0500000007
   target: {fileID: 1293717474}
 --- !u!1 &793720190
 GameObject:
@@ -845,11 +889,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 428254, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 172922, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
       propertyPath: m_Name
       value: Right Angeld Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 172922, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
@@ -897,6 +945,10 @@ Prefab:
       propertyPath: m_Name
       value: Left Angeld Platform (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 101102, guid: 5324a17c5c2e56e4b9a0f00b76649712, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5324a17c5c2e56e4b9a0f00b76649712, type: 2}
   m_IsPrefabParent: 0
@@ -937,7 +989,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 428254, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 172922, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
       propertyPath: m_Name
@@ -946,6 +998,10 @@ Prefab:
     - target: {fileID: 428254, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
       propertyPath: m_LocalScale.x
       value: 19.9055386
+      objectReference: {fileID: 0}
+    - target: {fileID: 172922, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
@@ -993,6 +1049,10 @@ Prefab:
       propertyPath: m_Name
       value: Right Angeld Platform (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 138142, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
   m_IsPrefabParent: 0
@@ -1005,11 +1065,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 481248, guid: bcdcf9dc9bf8b624e867e94b61e4ad32, type: 2}
       propertyPath: m_LocalPosition.x
-      value: .670000017
+      value: .400000006
       objectReference: {fileID: 0}
     - target: {fileID: 481248, guid: bcdcf9dc9bf8b624e867e94b61e4ad32, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.48000002
+      value: 2.5999999
       objectReference: {fileID: 0}
     - target: {fileID: 481248, guid: bcdcf9dc9bf8b624e867e94b61e4ad32, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1093,6 +1153,10 @@ Prefab:
       propertyPath: m_Name
       value: Left Angeld Platform (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 101102, guid: 5324a17c5c2e56e4b9a0f00b76649712, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5324a17c5c2e56e4b9a0f00b76649712, type: 2}
   m_IsPrefabParent: 0
@@ -1143,6 +1207,10 @@ Prefab:
       propertyPath: m_Name
       value: Right Angeld Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 138142, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
   m_IsPrefabParent: 0
@@ -1183,7 +1251,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 428254, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 172922, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
       propertyPath: m_Name
@@ -1200,6 +1268,10 @@ Prefab:
     - target: {fileID: 428254, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
       propertyPath: m_LocalScale.x
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 172922, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
@@ -1262,6 +1334,10 @@ Prefab:
       propertyPath: m_Name
       value: Left Angeld Platform (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 101102, guid: 5324a17c5c2e56e4b9a0f00b76649712, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5324a17c5c2e56e4b9a0f00b76649712, type: 2}
   m_IsPrefabParent: 0
@@ -1303,6 +1379,10 @@ Prefab:
     - target: {fileID: 495782, guid: 5324a17c5c2e56e4b9a0f00b76649712, type: 2}
       propertyPath: m_RootOrder
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 101102, guid: 5324a17c5c2e56e4b9a0f00b76649712, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5324a17c5c2e56e4b9a0f00b76649712, type: 2}
@@ -1446,6 +1526,10 @@ Prefab:
       propertyPath: m_Name
       value: Right Angeld Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 138142, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
   m_IsPrefabParent: 0
@@ -1491,6 +1575,10 @@ Prefab:
     - target: {fileID: 138142, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
       propertyPath: m_Name
       value: Right Angeld Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 138142, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da05d5e0f4ede664395a6a91f837fb89, type: 2}
@@ -1611,6 +1699,10 @@ Prefab:
     - target: {fileID: 101102, guid: 5324a17c5c2e56e4b9a0f00b76649712, type: 2}
       propertyPath: m_Name
       value: Left Angeld Platform (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 101102, guid: 5324a17c5c2e56e4b9a0f00b76649712, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5324a17c5c2e56e4b9a0f00b76649712, type: 2}
@@ -1743,7 +1835,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 428254, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 172922, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
       propertyPath: m_Name
@@ -1756,6 +1848,10 @@ Prefab:
     - target: {fileID: 428254, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
       propertyPath: m_LocalScale.y
       value: .562501609
+      objectReference: {fileID: 0}
+    - target: {fileID: 172922, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
@@ -1802,6 +1898,10 @@ Prefab:
     - target: {fileID: 101102, guid: 5324a17c5c2e56e4b9a0f00b76649712, type: 2}
       propertyPath: m_Name
       value: Left Angeld Platform (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 101102, guid: 5324a17c5c2e56e4b9a0f00b76649712, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5324a17c5c2e56e4b9a0f00b76649712, type: 2}

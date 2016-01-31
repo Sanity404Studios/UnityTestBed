@@ -49,12 +49,6 @@ public class HookThrow : MonoBehaviour {
 
         currPlayerPos = gameObject.transform.position;
 
-        // if the player is currently grappling and the hook is in automatic mode, continuslly invoke RaiseHook().
-        if(true== isGrappling && isInAutoMode)
-        {
-            Invoke("RaiseHook", Time.deltaTime);
-        }
-
         //Keeps currJointDistance up to date.
         if(true == isGrappling) 
         {
@@ -70,7 +64,7 @@ public class HookThrow : MonoBehaviour {
         }
         #region Keybinds
         // if bool is true and the Key E is pressed, get rid of everything with the grapple so the player can fall / continue on
-        if (true == isGrappling && Input.GetKeyDown(KeyCode.E))
+        if (true == isGrappling && Input.GetMouseButtonDown(1))
         {
             hThrow.DetachPlayer();
         }
@@ -105,7 +99,6 @@ public class HookThrow : MonoBehaviour {
         if (true == isGrappling)
         {
             lineRend.SetPosition(0, currPlayerPos);
-            lineRend.SetPosition(1, hitInfo.point);
         }
 
         if(hookRange < joint.distance)
@@ -113,6 +106,15 @@ public class HookThrow : MonoBehaviour {
             joint.distance = hookRange;
         }
 	}
+
+    void FixedUpdate()
+    {
+        // if the player is currently grappling and the hook is in automatic mode, continuslly invoke RaiseHook().
+        if (true == isGrappling && isInAutoMode)
+        {
+            Invoke("RaiseHook", Time.deltaTime);
+        }
+    }
 
     void SetMaxDistanceOnly(bool value)
     {
@@ -156,15 +158,9 @@ public class HookThrow : MonoBehaviour {
         return isGrappling;
     }
 
-    void AttachPlayer()
-    {
-        joint.connectedAnchor = hitInfo.point;
-        joint.distance = Vector2.Distance(currPlayerPos, hitInfo.point);
-    }
-
     void PreformRaycast()
     {
-        #region math for calculating relitive end points for raycasts
+        #region math for calculating relative end points for raycasts
         targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         targetPos.z = 0;
 
@@ -173,20 +169,23 @@ public class HookThrow : MonoBehaviour {
         relativeEndPoint.y = targetPos.y - currPlayerPos.y;
         #endregion
 
-
         hitInfo = Physics2D.Raycast(currPlayerPos, relativeEndPoint, hookRange, allowedObjects);
 
 
-        if (null != hitInfo.collider && false == hThrow.GetIsGrappling())
+        if (null != hitInfo.collider)
         {
             hThrow.SetupVisualsForHook();
         }
-        if(null != hitInfo.collider && true == hThrow.GetIsGrappling())
-        {
-            hThrow.DetachPlayer();
-            hitInfo = new RaycastHit2D();
-            hThrow.SetupVisualsForHook();
-        }
+        //if(null == hitInfo.collider)
+        //{
+        //    hThrow.DetachPlayer();
+        //}
+    }
+
+    void AttachPlayer()
+    {
+        joint.connectedAnchor = hitInfo.point;
+        joint.distance = Vector2.Distance(currPlayerPos, hitInfo.point);
     }
 
     //ONLY CALL IF YOU HAVE HIT SOMETHING WITH A RAYCAST. 
@@ -195,25 +194,28 @@ public class HookThrow : MonoBehaviour {
         if(null != hitInfo.collider)
         {
 
-            //enable the joint
             joint.enabled = true;
-            //enable the line renderer
             lineRend.enabled = true;
-            // set bool to true
             isGrappling = true;
 
             //calls method to attach player to the part of the level that was hit
             hThrow.AttachPlayer();
 
-            //sets up line renderer
+            //sets up line renderer points
             lineRend.SetPosition(0, currPlayerPos);
             lineRend.SetPosition(1, hitInfo.point);
+            Debug.Log("hitInfo point: " + hitInfo.point);
+
+            //Makes a particle system at the point where the hook hit along the same rotation as the object that was hit
             Instantiate(particleSystem, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
         }
+
+        #region debuging else
         else
         {
             Debug.LogError("YA SCRUB. WHY ARE YE CALLING THIS FUNCTON IF YOU HAVEN'T HIT SOMETHING WITH A RAYCAST?");
         }
+        #endregion
     }
 
     void DetachPlayer()

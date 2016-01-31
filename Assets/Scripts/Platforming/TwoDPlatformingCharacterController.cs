@@ -86,7 +86,6 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         {
             hasImpulsed = false;
         }
-        Debug.Log(hasImpulsed);
 
         //if the player is in the air and trying to move.
         if (false == onGround && hasMoved && true == hookTh.GetIsGrappling())
