@@ -11,7 +11,6 @@ GameObject:
   - 212: {fileID: 21200418}
   - 114: {fileID: 11408284}
   - 61: {fileID: 6151860}
-  - 114: {fileID: 11482336}
   - 50: {fileID: 5016918}
   m_Layer: 0
   m_Name: hookSpritePrefab
@@ -70,17 +69,6 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0936745c95128be4cace51ab30ffab33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11482336
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f0681bce20b01a4c9a6858774def49a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21200418

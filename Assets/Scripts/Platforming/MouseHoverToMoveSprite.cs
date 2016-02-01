@@ -8,7 +8,6 @@ public class MouseHoverToMoveSprite : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         playerSprite = GameObject.Find("PlayerSprite");
-	
 	}
 	
 	// Update is called once per frame
