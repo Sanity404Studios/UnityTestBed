@@ -15,7 +15,7 @@ public class HookThrow : MonoBehaviour {
     private Vector3 targetPos;
     private RaycastHit2D hitInfo;
     private float hookRange = 22.0f;
-    private float reelStep = 8f;
+    private float reelStep = 12f;
     private float stopDistance = 1.0f;
     private float currJointDistance;
     private bool isGrappling = false;
@@ -137,7 +137,7 @@ public class HookThrow : MonoBehaviour {
         }
         else
         {
-            Debug.Log("Player is not grappling(???) or player is too close to object");
+            //Debug.Log("Player is not grappling(???) or player is too close to object");
         }
     }
 
@@ -204,7 +204,7 @@ public class HookThrow : MonoBehaviour {
             //sets up line renderer points
             lineRend.SetPosition(0, currPlayerPos);
             lineRend.SetPosition(1, hitInfo.point);
-            Debug.Log("hitInfo point: " + hitInfo.point);
+            //Debug.Log("hitInfo point: " + hitInfo.point);
 
             //Makes a particle system at the point where the hook hit along the same rotation as the object that was hit
             Instantiate(particleSystem, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
