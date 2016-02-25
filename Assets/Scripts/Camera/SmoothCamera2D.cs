@@ -9,7 +9,7 @@ public class SmoothCamera2D : MonoBehaviour
     public Transform target;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (target)
         {
@@ -18,6 +18,5 @@ public class SmoothCamera2D : MonoBehaviour
             Vector3 destination = transform.position + delta;
             transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, dampTime);
         }
-
     }
 }
