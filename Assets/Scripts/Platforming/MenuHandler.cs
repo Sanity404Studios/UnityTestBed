@@ -13,14 +13,14 @@ public class MenuHandler : MonoBehaviour {
     public Button levelSelectButton;
     
     private int currLevel;
-    private MenuHandler mHand;
+    private MenuHandler menHand;
     //bool inMenu;
 
     void Awake()
     {
         currLevel = Application.loadedLevel;
 
-        mHand = gameObject.GetComponent<MenuHandler>();
+        menHand = gameObject.GetComponent<MenuHandler>();
         quitCanvas = quitCanvas.GetComponent<Canvas>();
         playButton = playButton.GetComponent<Button>();
         exitButton = exitButton.GetComponent<Button>();
@@ -31,7 +31,7 @@ public class MenuHandler : MonoBehaviour {
         quitCanvas.enabled = false;
         SettingsCanvas.enabled = false;
         LevelSelectCanvas.enabled = false;
-        mHand.CheckLevel(currLevel);
+        menHand.CheckLevel(currLevel);
 	}
     void CheckLevel(int loadedLevel)
     {
@@ -47,6 +47,7 @@ public class MenuHandler : MonoBehaviour {
         playButton.enabled = false;
         exitButton.enabled = false;
         settingsButton.enabled = false;
+        LevelSelectCanvas.enabled = false;
     }
 
     public void BackToMainMenu()
@@ -57,15 +58,26 @@ public class MenuHandler : MonoBehaviour {
         playButton.enabled = true;
         exitButton.enabled = true;
         settingsButton.enabled = true;
+        LevelSelectCanvas.enabled = false;
     }
     public void SettingsMenu()
     {
         settingsButton.enabled = false;
+        SettingsCanvas.enabled = true;
         playButton.enabled = false;
         exitButton.enabled = false;
         quitCanvas.enabled = false;
+        LevelSelectCanvas.enabled = false;
 
-        SettingsCanvas.enabled = true;
+        
+    }
+    public void LevelSelectMenu()
+    {
+        LevelSelectCanvas.enabled = true;
+        settingsButton.enabled = false;
+        playButton.enabled = false;
+        exitButton.enabled = false;
+        quitCanvas.enabled = false;
     }
     public void StartLevel()
     {
