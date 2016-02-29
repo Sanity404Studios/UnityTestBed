@@ -1,0 +1,5 @@
+A & D:               Move left and right
+Left Click:          Fires grappling hook.
+Right Click:         Releases hook if you are currently attached to something.
+R:                   Switches on and off Varible Distance Mode. When false, the grappling hook line acts more like a pipe than rope.
+F:                   Toggels automatic mode. When true, you will be automaticly pulled toward whatever you hit with your grapple hook.

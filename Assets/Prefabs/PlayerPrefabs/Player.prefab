@@ -32,6 +32,7 @@ GameObject:
   - 232: {fileID: 23206038}
   - 114: {fileID: 11466514}
   - 114: {fileID: 11467978}
+  - 114: {fileID: 11475340}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -46,7 +47,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.204999998, y: -.717999995, z: 0}
+  m_LocalPosition: {x: -0.205, y: -0.718, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 481248}
@@ -58,7 +59,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .670000017, y: .694000006, z: 0}
+  m_LocalPosition: {x: 0.4, y: 2.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 440130}
@@ -71,6 +72,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195204}
+  m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
@@ -87,12 +89,13 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195204}
   m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: .970000029, y: 1.29999995}
+  m_Size: {x: 0.97, y: 1.3}
 --- !u!95 &9575768
 Animator:
   serializedVersion: 3
@@ -121,7 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29834d1831327ef49ba4f5383e71caf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localCharacterSpeed: 12
   axisName: Horizontal
   anim: {fileID: 9575768}
   groundCheck: {fileID: 169540}
@@ -141,6 +143,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294966783
   hookSprite: {fileID: 0}
+  particleSystem: {fileID: 166196, guid: 3c52092f46680d54f879146f8aa1b3ca, type: 2}
   InAutoState: {fileID: 0}
   maxDistanceOnlyState: {fileID: 0}
 --- !u!114 &11467978
@@ -152,6 +155,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47be88a4812c8dd48ad47e5f99d2881a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11475340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb073835136d84e4691e25d128dd4ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!120 &12054658
@@ -175,7 +189,7 @@ LineRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -214,13 +228,15 @@ SpriteRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300028, guid: 97c84dedebb46fe43873fa418a0ddd0f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!232 &23206038
 DistanceJoint2D:
   m_ObjectHideFlags: 1
@@ -228,11 +244,15 @@ DistanceJoint2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195204}
   m_Enabled: 0
-  serializedVersion: 3
+  serializedVersion: 4
   m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: .0449428558, y: 1.97748446}
+  m_ConnectedAnchor: {x: 0.044942856, y: 1.9774845}
+  m_AutoConfigureDistance: 0
   m_Distance: 3
   m_MaxDistanceOnly: 1
 --- !u!1001 &100100000
