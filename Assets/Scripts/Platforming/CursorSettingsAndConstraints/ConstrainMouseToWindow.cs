@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 public class ConstrainMouseToWindow : MonoBehaviour {
 
-    //Creates new screen rect who's boundries ar the width and height of the screen
+    //Creates new screen rect who's boundries are the width and height of the screen
     Rect screenRect = new Rect(0, 0, Screen.width, Screen.height);
 	
 	// Update is called once per frame

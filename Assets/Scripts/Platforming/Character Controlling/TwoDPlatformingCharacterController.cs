@@ -25,7 +25,6 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private bool controlsLocked = false;
     private bool currentlyGrappling = false;
     private bool hasImpulsed;
-    private Quaternion startRotation;
     private Transform currPlatform = null;
     private Vector3 newScale;
     private Vector3 lastPlatformPosition = Vector3.zero;
@@ -35,7 +34,6 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        startRotation = gameObject.transform.rotation;
         //Gets animator component
         anim = gameObject.GetComponent<Animator>();
         //Gets 2d rigidbody

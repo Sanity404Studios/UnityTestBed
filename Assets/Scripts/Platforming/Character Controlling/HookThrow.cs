@@ -6,7 +6,7 @@ public class HookThrow : MonoBehaviour {
 
     public LayerMask allowedObjects;
     public GameObject hookSprite;
-    public GameObject particleSystem;
+    public GameObject myParticleSystem;
     public Text InAutoState;
     public Text maxDistanceOnlyState;
 
@@ -17,7 +17,6 @@ public class HookThrow : MonoBehaviour {
     private float hookRange = 22.0f;
     private float reelStep = 12f;
     private float stopDistance = 1.0f;
-    private float currJointDistance;
     private bool isGrappling = false;
     private bool isInAutoMode = false;
     private Vector2 currPlayerPos;
@@ -50,10 +49,9 @@ public class HookThrow : MonoBehaviour {
         currPlayerPos = gameObject.transform.position;
 
         //Keeps currJointDistance up to date.
-        if(true == isGrappling) 
-        {
-            currJointDistance = joint.distance;
-        }
+        //if(true == isGrappling) 
+        //{
+        //}
         
         //if the player is left clicking and the player is not currently grappling:
         if (Input.GetMouseButtonDown(0))
@@ -207,7 +205,7 @@ public class HookThrow : MonoBehaviour {
             //Debug.Log("hitInfo point: " + hitInfo.point);
 
             //Makes a particle system at the point where the hook hit along the same rotation as the object that was hit
-            Instantiate(particleSystem, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+            Instantiate(myParticleSystem, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
         }
 
         #region debuging else
