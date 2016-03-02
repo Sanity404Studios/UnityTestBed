@@ -276,7 +276,7 @@ GameObject:
   - 114: {fileID: 105238086}
   - 114: {fileID: 105238085}
   m_Layer: 5
-  m_Name: BackButton2
+  m_Name: LevelSelectBackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2009,7 +2009,7 @@ GameObject:
   - 114: {fileID: 1861037223}
   - 114: {fileID: 1861037222}
   m_Layer: 5
-  m_Name: BackButton
+  m_Name: SettingsBackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

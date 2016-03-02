@@ -77,6 +77,13 @@ public class MenuHandler : MonoBehaviour {
 
             case "SettingsBackButton":
                 break;
+            case "LevelSelectBackButton":
+                break;
         }
+    }
+
+    static void LoadLevelFromMenu(int levelIndexToLoad)
+    {
+        Application.LoadLevel(levelIndexToLoad);
     }
 }
