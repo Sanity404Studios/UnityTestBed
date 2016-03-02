@@ -13,7 +13,6 @@ public class ConstrainMouseToWindow : MonoBehaviour {
 
         if(false == screenRect.Contains(mousePos))
         {
-            Debug.Log("Mouse out of bounds! " + mousePos);
             return;
         }
 	}

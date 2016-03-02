@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class KillPlayer : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class KillPlayer : MonoBehaviour {
         GameObject.Destroy(gameObject);
 
         int levelLoaded = Application.loadedLevel;
+        
         Application.LoadLevel(levelLoaded);
     }
 }

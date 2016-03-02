@@ -33,6 +33,7 @@ GameObject:
   - 114: {fileID: 11466514}
   - 114: {fileID: 11467978}
   - 114: {fileID: 11475340}
+  - 114: {fileID: 11453448}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -128,6 +129,17 @@ MonoBehaviour:
   anim: {fileID: 9575768}
   groundCheck: {fileID: 169540}
   hookSprite: {fileID: 117804, guid: 8b64f6642232c8242890db18bb64c9ad, type: 2}
+--- !u!114 &11453448
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb073835136d84e4691e25d128dd4ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11466514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,7 +155,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294966783
   hookSprite: {fileID: 0}
-  particleSystem: {fileID: 166196, guid: 3c52092f46680d54f879146f8aa1b3ca, type: 2}
+  myParticleSystem: {fileID: 166196, guid: 3c52092f46680d54f879146f8aa1b3ca, type: 2}
   InAutoState: {fileID: 0}
   maxDistanceOnlyState: {fileID: 0}
 --- !u!114 &11467978
