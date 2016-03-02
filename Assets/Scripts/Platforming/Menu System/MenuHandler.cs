@@ -4,87 +4,79 @@ using UnityEngine.UI;
 
 public class MenuHandler : MonoBehaviour {
 
-    public Canvas quitCanvas;
-    public Canvas SettingsCanvas;
-    public Canvas LevelSelectCanvas;
-    public Button playButton;
-    public Button exitButton;
-    public Button settingsButton;
-    public Button levelSelectButton;
-    
-    private int currLevel;
-    private MenuHandler menHand;
-    //bool inMenu;
+    public Canvas[] canvasArray;
+    public Canvas StartCanvas;
+
+    private MenuHandler menhand;
 
     void Awake()
     {
-        currLevel = Application.loadedLevel;
-
-        menHand = gameObject.GetComponent<MenuHandler>();
-        quitCanvas = quitCanvas.GetComponent<Canvas>();
-        playButton = playButton.GetComponent<Button>();
-        exitButton = exitButton.GetComponent<Button>();
+        menhand = GetComponent<MenuHandler>();
+        menhand.HandleMenu(StartCanvas);
     }
 
-	// Use this for initialization
-	void Start () {
-        quitCanvas.enabled = false;
-        SettingsCanvas.enabled = false;
-        LevelSelectCanvas.enabled = false;
-        menHand.CheckLevel(currLevel);
-	}
-    void CheckLevel(int loadedLevel)
+    public void HandleMenu(Canvas canvas)
     {
-        if(0 == loadedLevel)
+        switch(canvas.name)
         {
-            //inMenu = true;
+                
+            case "StartMenu":
+                menhand.OperateMenu("StartMenu");
+                break;
+
+            case "QuitMenu":
+                OperateMenu("QuitMenu");
+                break;
+
+            case "SettingsMenu":
+                OperateMenu("SettingsMenu");
+                break;
+
+            case "LevelSelectMenu":
+                OperateMenu("LevelSelectMenu");
+                break;
+
+            default: Debug.LogError("No Such canvas exists! Are you sure you spelled it right or are converting it to a string?");
+                break;
         }
     }
 
-    public void ExitPress()
+    private void OperateMenu(string menuToActivate)
     {
-        quitCanvas.enabled = true;
-        playButton.enabled = false;
-        exitButton.enabled = false;
-        settingsButton.enabled = false;
-        LevelSelectCanvas.enabled = false;
+        Debug.Log("halp");
+        for(int i = 0; i < canvasArray.Length; i++)
+        {
+            if(canvasArray[i].name == menuToActivate)
+            {
+                canvasArray[i].enabled = true;
+                Debug.Log("Activated: " + canvasArray[i].name);
+            }
+            else
+            {
+                canvasArray[i].enabled = false;
+                Debug.Log("Deactivated: " + canvasArray[i].name);
+            }
+        }
     }
 
-    public void BackToMainMenu()
+    private void HandleButton(Button button)
     {
-        quitCanvas.enabled = false;
-        SettingsCanvas.enabled = false;
-        LevelSelectCanvas.enabled = false;
-        playButton.enabled = true;
-        exitButton.enabled = true;
-        settingsButton.enabled = true;
-        LevelSelectCanvas.enabled = false;
-    }
-    public void SettingsMenu()
-    {
-        settingsButton.enabled = false;
-        SettingsCanvas.enabled = true;
-        playButton.enabled = false;
-        exitButton.enabled = false;
-        quitCanvas.enabled = false;
-        LevelSelectCanvas.enabled = false;
+        switch(button.name)
+        {
+            case "Play":
+                break;
 
-        
-    }
-    public void LevelSelectMenu()
-    {
-        LevelSelectCanvas.enabled = true;
-        settingsButton.enabled = false;
-        playButton.enabled = false;
-        exitButton.enabled = false;
-        quitCanvas.enabled = false;
-    }
-    public void StartLevel()
-    {
-        Application.LoadLevel(1);
-    }
-    public void ExitGame()
-    {
-        Application.Quit();
+            case "Settings":
+                break;
+
+            case "Exit":
+                break;
+
+            case "LevelSellect":
+                break;
+
+            case "SettingsBackButton":
+                break;
+        }
     }
 }

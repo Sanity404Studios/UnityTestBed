@@ -97,7 +97,7 @@ GameObject:
   - 114: {fileID: 16694048}
   - 114: {fileID: 16694047}
   m_Layer: 5
-  m_Name: SettingsCanvas
+  m_Name: SettingsMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -637,13 +637,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d378f6b213e434e946362ea236ef77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quitCanvas: {fileID: 1853750979}
-  SettingsCanvas: {fileID: 16694049}
-  LevelSelectCanvas: {fileID: 1701305378}
-  playButton: {fileID: 1038870840}
-  exitButton: {fileID: 1166282527}
-  settingsButton: {fileID: 1911900960}
-  levelSelectButton: {fileID: 650180603}
+  canvasArray:
+  - {fileID: 480217018}
+  - {fileID: 1853750979}
+  - {fileID: 16694049}
+  - {fileID: 1701305378}
+  StartCanvas: {fileID: 480217018}
 --- !u!1 &580854696
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,7 +907,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'UNDER
+  m_Text: 'Under
 
 
     CONSTRUCTION'
@@ -1824,7 +1823,7 @@ GameObject:
   - 114: {fileID: 1701305377}
   - 114: {fileID: 1701305376}
   m_Layer: 5
-  m_Name: LevelSelectCanvas
+  m_Name: LevelSelectMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
