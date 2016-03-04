@@ -36,48 +36,55 @@ public class MenuHandler : MonoBehaviour {
                 OperateMenu("LevelSelectMenu");
                 break;
 
-            default: Debug.LogError("No Such canvas exists! Are you sure you spelled it right or are converting it to a string?");
+            default: Debug.LogError("No Such Canvas exists! Are you sure you spelled it right, converting it to a string, or are useing the .name property?");
                 break;
         }
     }
 
     private void OperateMenu(string menuToActivate)
     {
-        Debug.Log("halp");
         for(int i = 0; i < canvasArray.Length; i++)
         {
             if(canvasArray[i].name == menuToActivate)
             {
                 canvasArray[i].enabled = true;
-                Debug.Log("Activated: " + canvasArray[i].name);
             }
             else
             {
                 canvasArray[i].enabled = false;
-                Debug.Log("Deactivated: " + canvasArray[i].name);
             }
         }
     }
 
-    private void HandleButton(Button button)
+    public void HandleButton(Button button)
     {
         switch(button.name)
         {
             case "Play":
+                int loadedLevel = Application.loadedLevel;
+                LoadLevelFromMenu(loadedLevel + 1);
                 break;
 
             case "Settings":
+                OperateMenu("SettingsMenu");
                 break;
 
             case "Exit":
                 break;
 
-            case "LevelSellect":
+            case "LevelSelect":
+                OperateMenu("LevelSelectMenu");
                 break;
 
             case "SettingsBackButton":
+                OperateMenu("StartMenu");
                 break;
+
             case "LevelSelectBackButton":
+                OperateMenu("StartMenu");
+                break;
+
+             default: Debug.LogError("No Such Button exists! Are you sure you spelled it right, converting it to a string, or are useing the .name property?");
                 break;
         }
     }
