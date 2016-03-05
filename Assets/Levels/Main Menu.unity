@@ -1542,7 +1542,7 @@ GameObject:
   - 114: {fileID: 1537388065}
   - 114: {fileID: 1537388064}
   m_Layer: 5
-  m_Name: Yes
+  m_Name: QuitYes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1697,7 +1697,7 @@ GameObject:
   - 114: {fileID: 1641094558}
   - 114: {fileID: 1641094557}
   m_Layer: 5
-  m_Name: No
+  m_Name: QuitNo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

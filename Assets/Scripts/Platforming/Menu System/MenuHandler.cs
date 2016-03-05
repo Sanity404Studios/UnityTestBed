@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class MenuHandler : MonoBehaviour {
 
@@ -70,6 +71,7 @@ public class MenuHandler : MonoBehaviour {
                 break;
 
             case "Exit":
+                OperateMenu("QuitMenu");
                 break;
 
             case "LevelSelect":
