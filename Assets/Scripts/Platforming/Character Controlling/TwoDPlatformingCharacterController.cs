@@ -14,9 +14,10 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private float jumpPower = 750.0f;
     private float minJumpDelay = .65f;
     private float jumpTime = 0.0f;
-    private float swingingMovementMultiplier = 100f;
-    private float jumpingMovementMultiplier = 45;
-    private float grapplingForceMultiplier = 15;
+    private float swingingMovementMultiplier = 100.0f;
+    private float jumpingMovementMultiplier = 45.0f;
+    private float grapplingForceMultiplier = 15.0f;
+    private float timeInAir = 0.0f;
     private Rigidbody2D rb2d;
     private bool onGround = true;
     private bool jumping = false;
@@ -117,7 +118,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
             jumpTime = minJumpDelay;
         }
         //If not on the ground, and not jumping, set animator paramiter "Falling" to true for falling animation to play.
-        if (false == onGround && false == jumping)
+        if (false == onGround && false == jumping || 2.5 <= timeInAir)
         {
             falling = true;
             anim.SetBool("Falling", true);
