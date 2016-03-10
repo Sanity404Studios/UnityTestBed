@@ -1,90 +1,109 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Collections;
+
 
 public class MenuHandler : MonoBehaviour {
 
-    public Canvas quitCanvas;
-    public Canvas SettingsCanvas;
-    public Canvas LevelSelectCanvas;
-    public Button playButton;
-    public Button exitButton;
-    public Button settingsButton;
-    public Button levelSelectButton;
-    
-    private int currLevel;
-    private MenuHandler menHand;
-    //bool inMenu;
+    public Canvas[] canvasArray;
+    public Canvas StartCanvas;
+
+    private MenuHandler menhand;
 
     void Awake()
     {
-        currLevel = Application.loadedLevel;
-
-        menHand = gameObject.GetComponent<MenuHandler>();
-        quitCanvas = quitCanvas.GetComponent<Canvas>();
-        playButton = playButton.GetComponent<Button>();
-        exitButton = exitButton.GetComponent<Button>();
+        menhand = GetComponent<MenuHandler>();
+        menhand.HandleMenu(StartCanvas);
     }
 
-	// Use this for initialization
-	void Start () {
-        quitCanvas.enabled = false;
-        SettingsCanvas.enabled = false;
-        LevelSelectCanvas.enabled = false;
-        menHand.CheckLevel(currLevel);
-	}
-    void CheckLevel(int loadedLevel)
+    public void HandleMenu(Canvas canvas)
     {
-        if(0 == loadedLevel)
+        switch(canvas.name)
         {
-            //inMenu = true;
+                
+            case "StartMenu":
+                menhand.OperateMenu("StartMenu");
+                break;
+
+            case "QuitMenu":
+                OperateMenu("QuitMenu");
+                break;
+
+            case "SettingsMenu":
+                OperateMenu("SettingsMenu");
+                break;
+
+            case "LevelSelectMenu":
+                OperateMenu("LevelSelectMenu");
+                break;
+
+            default: Debug.LogError("No Such Canvas exists! Are you sure you spelled it right, converting it to a string, or are useing the .name property?");
+                break;
         }
     }
 
-    public void ExitPress()
+    private void OperateMenu(string menuToActivate)
     {
-        quitCanvas.enabled = true;
-        playButton.enabled = false;
-        exitButton.enabled = false;
-        settingsButton.enabled = false;
-        LevelSelectCanvas.enabled = false;
+        for(int i = 0; i < canvasArray.Length; i++)
+        {
+            if(canvasArray[i].name == menuToActivate)
+            {
+                canvasArray[i].enabled = true;
+            }
+            else
+            {
+                canvasArray[i].enabled = false;
+            }
+        }
     }
 
-    public void BackToMainMenu()
+    public void HandleButton(Button button)
     {
-        quitCanvas.enabled = false;
-        SettingsCanvas.enabled = false;
-        LevelSelectCanvas.enabled = false;
-        playButton.enabled = true;
-        exitButton.enabled = true;
-        settingsButton.enabled = true;
-        LevelSelectCanvas.enabled = false;
-    }
-    public void SettingsMenu()
-    {
-        settingsButton.enabled = false;
-        SettingsCanvas.enabled = true;
-        playButton.enabled = false;
-        exitButton.enabled = false;
-        quitCanvas.enabled = false;
-        LevelSelectCanvas.enabled = false;
+        switch(button.name)
+        {
+            case "Play":
+                int loadedLevel = Application.loadedLevel;
+                
+                LoadLevelFromMenu(loadedLevel + 1);
+                break;
 
-        
+            case "Settings":
+                OperateMenu("SettingsMenu");
+                break;
+
+            case "Exit":
+                OperateMenu("QuitMenu");
+
+                break;
+
+            case "LevelSelect":
+                OperateMenu("LevelSelectMenu");
+                break;
+
+            case "SettingsBackButton":
+                OperateMenu("StartMenu");
+                break;
+
+            case "LevelSelectBackButton":
+                OperateMenu("StartMenu");
+                break;
+
+            case "QuitYes":
+                Application.Quit();
+                break;
+
+            case "QuitNo":
+                OperateMenu("StartMenu");
+                break;
+
+             default: Debug.LogError("No Such Button exists! Are you sure you spelled it right, converting it to a string, or are useing the .name property?");
+                break;
+        }
     }
-    public void LevelSelectMenu()
+
+    static void LoadLevelFromMenu(int levelIndexToLoad)
     {
-        LevelSelectCanvas.enabled = true;
-        settingsButton.enabled = false;
-        playButton.enabled = false;
-        exitButton.enabled = false;
-        quitCanvas.enabled = false;
-    }
-    public void StartLevel()
-    {
-        Application.LoadLevel(1);
-    }
-    public void ExitGame()
-    {
-        Application.Quit();
+        Application.LoadLevel(levelIndexToLoad);
     }
 }

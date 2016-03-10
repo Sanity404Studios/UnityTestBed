@@ -97,7 +97,7 @@ GameObject:
   - 114: {fileID: 16694048}
   - 114: {fileID: 16694047}
   m_Layer: 5
-  m_Name: SettingsCanvas
+  m_Name: SettingsMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -276,7 +276,7 @@ GameObject:
   - 114: {fileID: 105238086}
   - 114: {fileID: 105238085}
   m_Layer: 5
-  m_Name: BackButton2
+  m_Name: LevelSelectBackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -339,11 +339,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 480217020}
-        m_MethodName: BackToMainMenu
-        m_Mode: 1
+        m_MethodName: HandleButton
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 105238085}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -637,13 +637,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d378f6b213e434e946362ea236ef77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quitCanvas: {fileID: 1853750979}
-  SettingsCanvas: {fileID: 16694049}
-  LevelSelectCanvas: {fileID: 1701305378}
-  playButton: {fileID: 1038870840}
-  exitButton: {fileID: 1166282527}
-  settingsButton: {fileID: 1911900960}
-  levelSelectButton: {fileID: 650180603}
+  canvasArray:
+  - {fileID: 480217018}
+  - {fileID: 1853750979}
+  - {fileID: 16694049}
+  - {fileID: 1701305378}
+  StartCanvas: {fileID: 480217018}
+  QuitSubMenu: {fileID: 0}
 --- !u!1 &580854696
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,7 +685,7 @@ GameObject:
   - 114: {fileID: 650180607}
   - 114: {fileID: 650180606}
   m_Layer: 5
-  m_Name: Level Select
+  m_Name: LevelSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -748,11 +748,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 480217020}
-        m_MethodName: LevelSelectMenu
-        m_Mode: 1
+        m_MethodName: HandleButton
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 650180603}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -908,7 +908,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'UNDER
+  m_Text: 'Under
 
 
     CONSTRUCTION'
@@ -1192,11 +1192,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 480217020}
-        m_MethodName: StartLevel
-        m_Mode: 1
+        m_MethodName: HandleButton
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1038870840}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1361,11 +1361,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 480217020}
-        m_MethodName: ExitPress
-        m_Mode: 1
+        m_MethodName: HandleMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1853750979}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Canvas, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1543,7 +1543,7 @@ GameObject:
   - 114: {fileID: 1537388065}
   - 114: {fileID: 1537388064}
   m_Layer: 5
-  m_Name: Yes
+  m_Name: QuitYes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1563,7 +1563,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -123, y: -215.8}
+  m_AnchoredPosition: {x: -123, y: -61}
   m_SizeDelta: {x: 53.6, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1537388064
@@ -1606,11 +1606,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 480217020}
-        m_MethodName: ExitGame
-        m_Mode: 1
+        m_MethodName: HandleButton
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1537388064}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1698,7 +1698,7 @@ GameObject:
   - 114: {fileID: 1641094558}
   - 114: {fileID: 1641094557}
   m_Layer: 5
-  m_Name: No
+  m_Name: QuitNo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1718,7 +1718,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 129.7, y: -214.8}
+  m_AnchoredPosition: {x: 129.7, y: -60}
   m_SizeDelta: {x: 53.6, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1641094557
@@ -1761,11 +1761,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 480217020}
-        m_MethodName: BackToMainMenu
-        m_Mode: 1
+        m_MethodName: HandleButton
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1641094557}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1824,7 +1824,7 @@ GameObject:
   - 114: {fileID: 1701305377}
   - 114: {fileID: 1701305376}
   m_Layer: 5
-  m_Name: LevelSelectCanvas
+  m_Name: LevelSelectMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2010,7 +2010,7 @@ GameObject:
   - 114: {fileID: 1861037223}
   - 114: {fileID: 1861037222}
   m_Layer: 5
-  m_Name: BackButton
+  m_Name: SettingsBackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2073,11 +2073,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 480217020}
-        m_MethodName: BackToMainMenu
-        m_Mode: 1
+        m_MethodName: HandleButton
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1861037222}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2184,11 +2184,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 480217020}
-        m_MethodName: SettingsMenu
-        m_Mode: 1
+        m_MethodName: HandleButton
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1911900960}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2573,6 +2573,6 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -162}
+  m_AnchoredPosition: {x: 0, y: -14}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
