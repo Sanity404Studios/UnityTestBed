@@ -643,6 +643,7 @@ MonoBehaviour:
   - {fileID: 16694049}
   - {fileID: 1701305378}
   StartCanvas: {fileID: 480217018}
+  QuitSubMenu: {fileID: 0}
 --- !u!1 &580854696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,11 +1361,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 480217020}
-        m_MethodName: ExitPress
-        m_Mode: 1
+        m_MethodName: HandleMenu
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1853750979}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Canvas, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1562,7 +1563,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -123, y: -215.8}
+  m_AnchoredPosition: {x: -123, y: -61}
   m_SizeDelta: {x: 53.6, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1537388064
@@ -1605,11 +1606,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 480217020}
-        m_MethodName: ExitGame
-        m_Mode: 1
+        m_MethodName: HandleButton
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1537388064}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1717,7 +1718,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 129.7, y: -214.8}
+  m_AnchoredPosition: {x: 129.7, y: -60}
   m_SizeDelta: {x: 53.6, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1641094557
@@ -1760,11 +1761,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 480217020}
-        m_MethodName: BackToMainMenu
-        m_Mode: 1
+        m_MethodName: HandleButton
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1641094557}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2572,6 +2573,6 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -162}
+  m_AnchoredPosition: {x: 0, y: -14}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}

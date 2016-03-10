@@ -26,7 +26,7 @@ public class MouseHoverToMoveSprite : MonoBehaviour {
         {
             playerSprite.transform.position = GameObject.Find("SettingsSpawn").transform.position;
         }
-        if ("Level Select" == gameObject.name)
+        if ("LevelSelect" == gameObject.name)
         {
             playerSprite.transform.position = GameObject.Find("LevelSelectSpawn").transform.position; 
         }

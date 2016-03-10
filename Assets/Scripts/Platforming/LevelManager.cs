@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class SceneManager : MonoBehaviour {
+public class LevelManager : MonoBehaviour {
 
     int loadedLevel;
     public Text winText;

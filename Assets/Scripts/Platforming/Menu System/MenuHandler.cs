@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
+
 public class MenuHandler : MonoBehaviour {
 
     public Canvas[] canvasArray;
@@ -63,6 +64,7 @@ public class MenuHandler : MonoBehaviour {
         {
             case "Play":
                 int loadedLevel = Application.loadedLevel;
+                
                 LoadLevelFromMenu(loadedLevel + 1);
                 break;
 
@@ -72,6 +74,7 @@ public class MenuHandler : MonoBehaviour {
 
             case "Exit":
                 OperateMenu("QuitMenu");
+
                 break;
 
             case "LevelSelect":
@@ -83,6 +86,14 @@ public class MenuHandler : MonoBehaviour {
                 break;
 
             case "LevelSelectBackButton":
+                OperateMenu("StartMenu");
+                break;
+
+            case "QuitYes":
+                Application.Quit();
+                break;
+
+            case "QuitNo":
                 OperateMenu("StartMenu");
                 break;
 
