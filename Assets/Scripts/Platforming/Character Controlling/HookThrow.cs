@@ -34,7 +34,6 @@ public class HookThrow : MonoBehaviour {
         joint.enabled = false;
         lineRend = GetComponent<LineRenderer>();
         hThrow = GetComponent<HookThrow>();
-        
     }
 
     void Start()
@@ -221,5 +220,11 @@ public class HookThrow : MonoBehaviour {
         joint.enabled = false;
         isGrappling = false;
         lineRend.enabled = false;
+    }
+
+    //Only call this when the player dies!
+    public void EmergencyDisconectFromHook()
+    {
+        hThrow.DetachPlayer();
     }
 }
