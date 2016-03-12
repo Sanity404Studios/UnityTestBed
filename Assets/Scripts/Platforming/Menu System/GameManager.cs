@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour {
 
     private static int deathCounter = 0;
     private static int currLevel_;
-    private static Transform playerStartingPosition;
+    private static Vector3 playerStartingPosition;
     private static GameObject playerObject;
     private static bool shouldDisplayWin = false;
     private static HookThrow hookThrow;
@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
     void Awake()
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
-        playerStartingPosition = playerObject.transform;
+        playerStartingPosition = playerObject.transform.position;
         hookThrow = playerObject.GetComponent<HookThrow>();
         currLevel_ = SceneManager.GetActiveScene().buildIndex;
 
@@ -32,28 +32,22 @@ public class GameManager : MonoBehaviour {
     public static void OnPlayerDeath()
     {
         hookThrow.EmergencyDisconectFromHook();
-        playerObject.transform.position = playerStartingPosition.position;
+        playerObject.transform.position = playerStartingPosition;
         IncrementDeathCounter();
-    }
-
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if("Player" == other.collider.name)
-        {
-            LoadNextLevel();
-        }
     }
 
     public static void LoadNextLevel()
     {
+        Debug.Log("Start of method");
         if(currLevel_ >= SceneManager.sceneCountInBuildSettings)
         {
+            Debug.LogError("Incrementing would put the current scene index outside of the build index!");
             shouldDisplayWin = true;
             SwitchLevelDeletion(0);
             //Return to main menu with text saying you win
         }
         
-        SwitchLevelDeletion(currLevel_++);
+        SwitchLevelDeletion(++currLevel_);
     }
 
     public static int GetDeathCounter()

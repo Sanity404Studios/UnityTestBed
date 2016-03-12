@@ -229,14 +229,6 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         #endregion
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if ("DeathLine" == other.gameObject.name)
-        {
-            GameManager.OnPlayerDeath();
-        }
-    }
-
     void LerpRotatePlayer()
     {
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, Time.deltaTime * 10);
