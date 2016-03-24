@@ -145,6 +145,7 @@ MonoBehaviour:
   myParticleSystem: {fileID: 166196, guid: 3c52092f46680d54f879146f8aa1b3ca, type: 2}
   InAutoState: {fileID: 0}
   maxDistanceOnlyState: {fileID: 0}
+  hookHitSound: {fileID: 8300000, guid: 75c174f5aaac8fd4abfc9aabf6e24e23, type: 3}
 --- !u!114 &11467978
 MonoBehaviour:
   m_ObjectHideFlags: 1

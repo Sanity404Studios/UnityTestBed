@@ -9,6 +9,7 @@ public class HookThrow : MonoBehaviour {
     public GameObject myParticleSystem;
     public Text InAutoState;
     public Text maxDistanceOnlyState;
+    public AudioClip hookHitSound;
 
     private LineRenderer lineRend;
     private DistanceJoint2D joint;
@@ -23,6 +24,7 @@ public class HookThrow : MonoBehaviour {
     private HookThrow hThrow;
     private GameObject currHit;
     private GameObject LastHit;
+    private AudioSource audSource;
 
     private string autoModeText = "Automatic Mode: ";
     private string lengthStateText = "Variable Distance Mode: ";
@@ -34,6 +36,11 @@ public class HookThrow : MonoBehaviour {
         joint.enabled = false;
         lineRend = GetComponent<LineRenderer>();
         hThrow = GetComponent<HookThrow>();
+<<<<<<< HEAD
+=======
+        audSource = GetComponent<AudioSource>();
+        
+>>>>>>> refs/remotes/origin/ActiveDev001
     }
 
     void Start()
@@ -201,10 +208,11 @@ public class HookThrow : MonoBehaviour {
             //sets up line renderer points
             lineRend.SetPosition(0, currPlayerPos);
             lineRend.SetPosition(1, hitInfo.point);
-            //Debug.Log("hitInfo point: " + hitInfo.point);
 
             //Makes a particle system at the point where the hook hit along the same rotation as the object that was hit
             Instantiate(myParticleSystem, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+
+            audSource.PlayOneShot(hookHitSound);
         }
 
         #region debuging else
