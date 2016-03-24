@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 425132}
   - 212: {fileID: 21294866}
   - 61: {fileID: 6151748}
-  - 114: {fileID: 11428286}
+  - 114: {fileID: 11499356}
   m_Layer: 0
   m_Name: Deathtrap1
   m_TagString: Untagged
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.21772291e-05, y: 102.149994, z: 0}
+  m_LocalPosition: {x: 0.000012177229, y: 102.149994, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -37,13 +37,14 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192968}
   m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -.150000006, y: 0}
+  m_Offset: {x: -0.15, y: 0}
   serializedVersion: 2
   m_Size: {x: 2.25, y: 10}
---- !u!114 &11428286
+--- !u!114 &11499356
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -51,7 +52,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 192968}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc0abb2cc7926904bb6da5588697ec17, type: 3}
+  m_Script: {fileID: 11500000, guid: c38cd1430232b974d99317f5e67f3b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21294866
@@ -75,13 +76,15 @@ SpriteRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e8e900eba627abc45a612b7f6d6668b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

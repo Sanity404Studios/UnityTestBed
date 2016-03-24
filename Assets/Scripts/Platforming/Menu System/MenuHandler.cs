@@ -63,9 +63,7 @@ public class MenuHandler : MonoBehaviour {
         switch(button.name)
         {
             case "Play":
-                int loadedLevel = Application.loadedLevel;
-                
-                LoadLevelFromMenu(loadedLevel + 1);
+                GameManager.LoadNextLevel();
                 break;
 
             case "Settings":
@@ -100,10 +98,5 @@ public class MenuHandler : MonoBehaviour {
              default: Debug.LogError("No Such Button exists! Are you sure you spelled it right, converting it to a string, or are useing the .name property?");
                 break;
         }
-    }
-
-    static void LoadLevelFromMenu(int levelIndexToLoad)
-    {
-        Application.LoadLevel(levelIndexToLoad);
     }
 }

@@ -41,11 +41,6 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         //Gets reference to hook throw script
         hookTh = gameObject.GetComponent<HookThrow>();
-
-        if(Application.loadedLevel > 0)
-        {
-            //InvokeRepeating("LerpRotatePlayer", Time.deltaTime, Time.deltaTime);
-        }
     }
 
     // Update is called once per frame
@@ -232,16 +227,6 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         //    controlsLocked = false;
         //}
         #endregion
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        //If the trigger the Player Character is colliding with is named "DeathLine", get the index of the loaded level and restart that level
-        if ("DeathLine" == other.gameObject.name)
-        {
-            int loadedLevel = Application.loadedLevel;
-            Application.LoadLevel(loadedLevel);
-        }
     }
 
     void LerpRotatePlayer()

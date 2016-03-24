@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3315630}
   - 23: {fileID: 2349996}
   - 61: {fileID: 6134100}
-  - 114: {fileID: 11469922}
+  - 114: {fileID: 11492356}
   m_Layer: 0
   m_Name: PortalToNextLevel
   m_TagString: Untagged
@@ -73,12 +73,12 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 17c5744c5b2a7064c9d6f92a85bed42c, type: 2}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &11469922
+--- !u!114 &11492356
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -86,10 +86,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 181634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbcb81ea25df09e488d5bd5fae2a70f9, type: 3}
+  m_Script: {fileID: 11500000, guid: cef30df3e6c6d8947ae4b8e737d6129a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winText: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
