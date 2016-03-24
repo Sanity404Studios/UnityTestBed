@@ -637,7 +637,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-<<<<<<< HEAD
 --- !u!1 &1787762330
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,7 +898,6 @@ MeshFilter:
 --- !u!4 &1796142806
 =======
 --- !u!4 &1787762333 stripped
->>>>>>> origin/ActiveDev001
 Transform:
   m_PrefabParentObject: {fileID: 481248, guid: bcdcf9dc9bf8b624e867e94b61e4ad32, type: 2}
   m_PrefabInternal: {fileID: 2146633990}

@@ -36,11 +36,10 @@ public class HookThrow : MonoBehaviour {
         joint.enabled = false;
         lineRend = GetComponent<LineRenderer>();
         hThrow = GetComponent<HookThrow>();
-<<<<<<< HEAD
-=======
+
+
         audSource = GetComponent<AudioSource>();
-        
->>>>>>> refs/remotes/origin/ActiveDev001
+
     }
 
     void Start()
