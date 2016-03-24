@@ -17,11 +17,17 @@ public class GameManager : MonoBehaviour {
         playerStartingPosition = playerObject.transform.position;
         hookThrow = playerObject.GetComponent<HookThrow>();
         currLevel_ = SceneManager.GetActiveScene().buildIndex;
+        
 
         if(true == shouldDisplayWin)
         {
             //code here for displaying the win text.
         }
+    }
+
+    void Start()
+    {
+        Debug.Log(currLevel_);
     }
 
     public static void SwitchLevelDeletion(int sceneBuildIndexToLoad)
@@ -41,12 +47,11 @@ public class GameManager : MonoBehaviour {
         Debug.Log("Start of method");
         if(currLevel_ >= SceneManager.sceneCountInBuildSettings)
         {
-            Debug.LogError("Incrementing would put the current scene index outside of the build index!");
+            Debug.LogWarning("Incrementing would put the current scene index outside of the build index!");
             shouldDisplayWin = true;
             SwitchLevelDeletion(0);
             //Return to main menu with text saying you win
         }
-        
         SwitchLevelDeletion(++currLevel_);
     }
 
