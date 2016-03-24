@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour {
 
     public static void OnPlayerDeath()
     {
+        Debug.Log("It!");
         hookThrow.EmergencyDisconectFromHook();
         playerObject.transform.position = playerStartingPosition;
         IncrementDeathCounter();
