@@ -26,6 +26,8 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private bool controlsLocked = false;
     private bool currentlyGrappling = false;
     private bool hasImpulsed;
+    private bool landHasBeenPlayed = false;
+    private bool jumpHasBeenPlayed = false;
     private Transform currPlatform = null;
     private Vector3 newScale;
     private Vector3 lastPlatformPosition = Vector3.zero;
@@ -115,6 +117,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
             anim.SetBool("In Air From Jump", true);
             rb2d.AddForce(transform.up * jumpPower);   
             jumpTime = minJumpDelay;
+            landHasBeenPlayed = false;
         }
         //If not on the ground, and not jumping, set animator paramiter "Falling" to true for falling animation to play.
         if (false == onGround && false == jumping || 2.5 <= timeInAir)
@@ -163,6 +166,8 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
             currentlyGrappling = false;
         }
         #endregion
+
+        Debug.Log(landHasBeenPlayed);
     }
 
     void FixedUpdate()
@@ -186,7 +191,6 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
             anim.SetBool("In Air From Jump", false);
             anim.SetBool("Falling", false);
         }
-
 
         #endregion Platform Detection
 
@@ -236,5 +240,20 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     public void CallToPlayFootstep()
     {
         FootstepManager.PlayPlayerFootstep(audSource);
+    }
+    public void OnJump()
+    {
+        if (false == jumpHasBeenPlayed)
+        {
+            JumpandLandSounds.DoJumpSound(audSource);
+        }
+    }
+    public void OnLand()
+    {
+        if(false == landHasBeenPlayed)
+        {
+            JumpandLandSounds.DoLandSound(audSource);
+            landHasBeenPlayed = true;
+        }
     }
 }

@@ -650,6 +650,7 @@ GameObject:
   - 114: {fileID: 642485627}
   - 114: {fileID: 642485629}
   - 114: {fileID: 642485630}
+  - 114: {fileID: 642485631}
   m_Layer: 0
   m_Name: _GAMEMANAGER
   m_TagString: Untagged
@@ -706,6 +707,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c01d6b07e0726b247b116e5bf4f72657, type: 3}
   - {fileID: 8300000, guid: bf4d009c9f3eb334da933bb565c40388, type: 3}
   - {fileID: 8300000, guid: 3c15c566b7ad9af48bd3f0f5b4fdea2f, type: 3}
+--- !u!114 &642485631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 642485626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7364f530ae5c7fd47a6ce4985637f2ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpSound: {fileID: 8300000, guid: 13efa8a26102c134c85606ed67ba9f39, type: 3}
+  landSound: {fileID: 8300000, guid: f47d100f8fe2687428b78ae638adfe0b, type: 3}
 --- !u!4 &660922663 stripped
 Transform:
   m_PrefabParentObject: {fileID: 428254, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
@@ -1629,7 +1643,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 481248, guid: bcdcf9dc9bf8b624e867e94b61e4ad32, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11466514, guid: bcdcf9dc9bf8b624e867e94b61e4ad32, type: 2}
       propertyPath: InAutoState

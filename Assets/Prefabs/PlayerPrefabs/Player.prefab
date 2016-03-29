@@ -201,7 +201,7 @@ MonoBehaviour:
   axisName: Horizontal
   anim: {fileID: 9575768}
   groundCheck: {fileID: 169540}
-  hookSprite: {fileID: 117804, guid: 8b64f6642232c8242890db18bb64c9ad, type: 2}
+  hookSprite: {fileID: 0}
 --- !u!114 &11466514
 MonoBehaviour:
   m_ObjectHideFlags: 1
