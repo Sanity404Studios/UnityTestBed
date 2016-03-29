@@ -168,7 +168,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         }
         #endregion
 
-        if(false == anim.GetBool(0))
+        if(true == onGround)
         {
             jumpHasBeenPlayed = false;
         }
@@ -243,13 +243,14 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
 
     public void CallToPlayFootstep()
     {
-        FootstepManager.PlayPlayerFootstep(audSource);
+        SoundManager.PlayPlayerFootstep(audSource);
     }
     public void OnJump()
     {
         if (false == jumpHasBeenPlayed)
         {
             JumpandLandSounds.DoJumpSound(audSource);
+            jumpHasBeenPlayed = true;
         }
     }
     public void OnLand()
