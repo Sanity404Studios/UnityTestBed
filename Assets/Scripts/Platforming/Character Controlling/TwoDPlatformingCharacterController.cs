@@ -31,6 +31,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
     private Vector3 lastPlatformPosition = Vector3.zero;
     private Vector3 currPlatformDelta = Vector3.zero;
     private HookThrow hookTh;
+    private AudioSource audSource;
 
     // Use this for initialization
     void Start()
@@ -41,6 +42,9 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         //Gets reference to hook throw script
         hookTh = gameObject.GetComponent<HookThrow>();
+        //Gets refference to audio source component
+        audSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -229,8 +233,8 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         #endregion
     }
 
-    void LerpRotatePlayer()
+    public void CallToPlayFootstep()
     {
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, Time.deltaTime * 10);
+        FootstepManager.PlayPlayerFootstep(audSource);
     }
 }
