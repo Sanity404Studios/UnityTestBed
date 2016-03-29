@@ -487,7 +487,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!114 &292089451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1303,12 +1303,13 @@ Prefab:
     - target: {fileID: 11406756, guid: 692ab38019b26da4b9240dab4eb68709, type: 2}
       propertyPath: jumpSound
       value: 
-      objectReference: {fileID: 8300000, guid: 13efa8a26102c134c85606ed67ba9f39, type: 3}
+      objectReference: {fileID: 8300000, guid: eed43a502f4a9bd45825c3644a20a772, type: 3}
     - target: {fileID: 11406756, guid: 692ab38019b26da4b9240dab4eb68709, type: 2}
       propertyPath: landSound
       value: 
-      objectReference: {fileID: 8300000, guid: f47d100f8fe2687428b78ae638adfe0b, type: 3}
-    m_RemovedComponents: []
+      objectReference: {fileID: 8300000, guid: d298ecad0f58f4d4d82c651c7f892048, type: 3}
+    m_RemovedComponents:
+    - {fileID: 11481156, guid: 692ab38019b26da4b9240dab4eb68709, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 692ab38019b26da4b9240dab4eb68709, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1682982569
@@ -1554,10 +1555,6 @@ Prefab:
       propertyPath: maxDistanceOnlyState
       value: 
       objectReference: {fileID: 580781170}
-    - target: {fileID: 11466514, guid: bcdcf9dc9bf8b624e867e94b61e4ad32, type: 2}
-      propertyPath: particleSystem
-      value: 
-      objectReference: {fileID: 166196, guid: 3c52092f46680d54f879146f8aa1b3ca, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bcdcf9dc9bf8b624e867e94b61e4ad32, type: 2}
   m_IsPrefabParent: 0
