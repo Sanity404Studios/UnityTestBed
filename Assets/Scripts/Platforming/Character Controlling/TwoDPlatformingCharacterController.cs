@@ -118,6 +118,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
             rb2d.AddForce(transform.up * jumpPower);   
             jumpTime = minJumpDelay;
             landHasBeenPlayed = false;
+            jumpHasBeenPlayed = true;
         }
         //If not on the ground, and not jumping, set animator paramiter "Falling" to true for falling animation to play.
         if (false == onGround && false == jumping || 2.5 <= timeInAir)
@@ -167,7 +168,10 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         }
         #endregion
 
-        Debug.Log(landHasBeenPlayed);
+        if(false == anim.GetBool(0))
+        {
+            jumpHasBeenPlayed = false;
+        }
     }
 
     void FixedUpdate()
