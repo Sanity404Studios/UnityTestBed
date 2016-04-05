@@ -18,20 +18,20 @@ public class SoundManager : MonoBehaviour
 
     public static void PlayPlayerFootstep(AudioSource audSorc)
     {
-        PlayStepJumpOrLand(audSorc, staticRef.playerFootstepArray);
+        PlaySound(audSorc, staticRef.playerFootstepArray);
     }
 
     public static void PlayPlayerJump(AudioSource audSorc)
     {
-        PlayStepJumpOrLand(audSorc, staticRef.playerJumpArray);
+        PlaySound(audSorc, staticRef.playerJumpArray);
     }
 
     public static void PlayPlayerLand(AudioSource audSorc)
     {
-        PlayStepJumpOrLand(audSorc, staticRef.playerLandArray);
+        PlaySound(audSorc, staticRef.playerLandArray);
     }
 
-    private static void PlayStepJumpOrLand(AudioSource audSorc, AudioClip[] audClipArray)
+    private static void PlaySound(AudioSource audSorc, AudioClip[] audClipArray)
     {
         int soundToPlay = (int)Random.Range(0.0f, audClipArray.Length);
 

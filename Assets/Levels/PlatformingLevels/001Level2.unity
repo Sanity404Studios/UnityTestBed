@@ -648,6 +648,29 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 428254, guid: 8669946df8bec7141bdba6e759115ac1, type: 2}
   m_PrefabInternal: {fileID: 461076884}
+--- !u!1 &564706901 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 111958, guid: 692ab38019b26da4b9240dab4eb68709, type: 2}
+  m_PrefabInternal: {fileID: 1670242182}
+--- !u!114 &564706902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 564706901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e378542906a56434e82df64dd18e041d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerFootstepArray:
+  - {fileID: 8300000, guid: c01d6b07e0726b247b116e5bf4f72657, type: 3}
+  - {fileID: 8300000, guid: bf4d009c9f3eb334da933bb565c40388, type: 3}
+  - {fileID: 8300000, guid: 3c15c566b7ad9af48bd3f0f5b4fdea2f, type: 3}
+  playerJumpArray:
+  - {fileID: 8300000, guid: eed43a502f4a9bd45825c3644a20a772, type: 3}
+  playerLandArray:
+  - {fileID: 8300000, guid: d298ecad0f58f4d4d82c651c7f892048, type: 3}
 --- !u!1 &580781169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,6 +1333,7 @@ Prefab:
       objectReference: {fileID: 8300000, guid: d298ecad0f58f4d4d82c651c7f892048, type: 3}
     m_RemovedComponents:
     - {fileID: 11481156, guid: 692ab38019b26da4b9240dab4eb68709, type: 2}
+    - {fileID: 11406756, guid: 692ab38019b26da4b9240dab4eb68709, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 692ab38019b26da4b9240dab4eb68709, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1682982569
