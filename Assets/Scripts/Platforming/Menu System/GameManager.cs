@@ -26,11 +26,6 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    void Start()
-    {
-        Debug.Log(currLevel_);
-    }
-
     public static void SwitchLevelDeletion(int sceneBuildIndexToLoad)
     {
         SceneManager.LoadScene(sceneBuildIndexToLoad);

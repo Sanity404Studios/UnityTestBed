@@ -167,10 +167,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         }
         #endregion
 
-        if(true == onGround)
-        {
-            jumpHasBeenPlayed = false;
-        }
+        Debug.Log("jumphasbeenplayed = " + jumpHasBeenPlayed + " landhasbeenplayed = " + landHasBeenPlayed);
     }
 
     void FixedUpdate()
@@ -240,7 +237,7 @@ public class TwoDPlatformingCharacterController : MonoBehaviour
         #endregion
     }
 
-    public void CallToPlayFootstep()
+    public void OnStep()
     {
         SoundManager.PlayPlayerFootstep(audSource);
     }
